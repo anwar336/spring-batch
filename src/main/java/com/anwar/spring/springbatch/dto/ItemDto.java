@@ -14,6 +14,6 @@ import lombok.Data;
  */
 @Data
 public class ItemDto implements Serializable{
-    private String name;
-    private String role;
+    private String groomName;
+    private String brideName;
 }

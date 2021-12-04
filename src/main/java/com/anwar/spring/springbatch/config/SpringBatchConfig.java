@@ -61,8 +61,8 @@ public class SpringBatchConfig {
                 new SqlPagingQueryProviderFactoryBean();
  
         provider.setDataSource(dataSource);
-        provider.setSelectClause("SELECT email_address, name, purchased_package");
-        provider.setFromClause("FROM students");
+        provider.setSelectClause("SELECT groom_name, bride_name");
+        provider.setFromClause("FROM marriage_register");
         provider.setSortKeys(sortByEmailAddressAsc());
  
         return provider;
@@ -70,7 +70,7 @@ public class SpringBatchConfig {
     
     private Map<String, Order> sortByEmailAddressAsc() {
         Map<String, Order> sortConfiguration = new HashMap<>();
-        sortConfiguration.put("email_address", Order.ASCENDING);
+        sortConfiguration.put("groom_name", Order.ASCENDING);
         return sortConfiguration;
     }
 
