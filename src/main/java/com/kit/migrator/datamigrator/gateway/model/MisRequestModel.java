@@ -123,5 +123,13 @@ public class MisRequestModel {
         }
         this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
         this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
+        
+        //// static data
+        
+        this.partner_code = "1001";
+        this.boma = "1000";
+        this.payam = "1010";
+        this.county = "1007";
+        this.state = "1008";
     }
 }

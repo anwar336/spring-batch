@@ -24,7 +24,12 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
             MisResponseModel responseModel = gateway.syncData(requestModel);
             if(responseModel != null){
                 if(!responseModel.getError()){
-                    log.info("Beneficiary synced with id {} ", b.getApplicationId());
+                    if(responseModel.getReturnId() > 100){
+                        log.info("Beneficiary synced with id {} ", b.getApplicationId());
+                    }
+                    else{
+                        log.error("Beneficiary validation error. Reason {} ", responseModel.getReturnId());
+                    }
                 }
                 else{
                     log.error("Beneficiary synced error. Reason {} ", responseModel.getErrorMessage());

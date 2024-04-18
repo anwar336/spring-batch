@@ -40,9 +40,6 @@ public class BatchConfig {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
-//    @Autowired
-//    JobRepository jobRepository;
-
     @Bean
     @StepScope
     public ItemReader<Beneficiary> beneficiaryReader(@Value("#{jobParameters}") Map<String, Object> jobParameters) throws Exception {
