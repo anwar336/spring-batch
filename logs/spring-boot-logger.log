@@ -1531,3 +1531,513 @@ Caused by: java.lang.IllegalArgumentException: Value must not be null!
 2024-04-18 01:02:57,538 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringContextShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-18 01:02:57,550 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown initiated...
 2024-04-18 01:02:57,557 INFO com.zaxxer.hikari.HikariDataSource [SpringContextShutdownHook] HikariPool-1 - Shutdown completed.
+2024-04-18 11:49:01,428 INFO org.springframework.boot.StartupInfoLogger [main] Starting DataMigratorApplication using Java 1.8.0_202 on K-ANWAR-L3 with PID 54180 (E:\Projects\spring-batch\target\classes started by anwarul.islam in E:\Projects\spring-batch)
+2024-04-18 11:49:01,428 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2024-04-18 11:49:01,837 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18 11:49:01,875 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interfaces.
+2024-04-18 11:49:02,230 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-18 11:49:02,272 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.28.Final
+2024-04-18 11:49:02,374 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-18 11:49:02,443 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2024-04-18 11:49:04,494 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-04-18 11:49:04,512 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2024-04-18 11:49:06,412 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-18 11:49:06,420 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18 11:49:06,700 WARN org.springframework.batch.core.listener.AbstractListenerFactoryBean [main] org.springframework.batch.item.ItemReader is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2024-04-18 11:49:06,742 WARN org.springframework.boot.autoconfigure.batch.JpaBatchConfigurer [main] JPA does not support custom isolation levels, so locks may not be taken when launching Jobs
+2024-04-18 11:49:07,033 INFO org.springframework.batch.core.repository.support.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: SQLSERVER
+2024-04-18 11:49:07,123 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2024-04-18 11:49:07,183 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2024-04-18 11:49:07,199 INFO org.springframework.boot.StartupInfoLogger [main] Started DataMigratorApplication in 6.112 seconds (JVM running for 7.101)
+2024-04-18 11:49:07,199 INFO org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner [main] Running default command line with: []
+2024-04-18 11:49:12,780 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [scheduling-1] Job: [SimpleJob: [name=migratorJob]] launched with the following parameters: [{FROM_DATE=1710827347199, TO_DATE=1713505747199, TRACE_ID=04fb210a-7d40-45fd-b8b3-f99039d89603}]
+2024-04-18 11:49:17,654 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [main] Job: [SimpleJob: [name=migratorJob]] launched with the following parameters: [{}]
+2024-04-18 11:49:18,643 INFO org.springframework.batch.core.job.SimpleStepHandler [scheduling-1] Executing step: [migrationStep1]
+2024-04-18 11:49:23,745 INFO org.springframework.batch.core.job.SimpleStepHandler [main] Executing step: [migrationStep1]
+2024-04-18 11:49:26,794 ERROR org.springframework.batch.core.step.AbstractStep [main] Encountered an error executing step migrationStep1 in job migratorJob
+org.springframework.dao.InvalidDataAccessApiUsageException: Value must not be null!; nested exception is java.lang.IllegalArgumentException: Value must not be null!
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:374)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:235)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:551)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy83.findBeneficiaryByCreatedBetween(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:283)
+	at org.springframework.batch.item.data.RepositoryItemReader.doInvoke(RepositoryItemReader.java:260)
+	at org.springframework.batch.item.data.RepositoryItemReader.doPageRead(RepositoryItemReader.java:223)
+	at org.springframework.batch.item.data.RepositoryItemReader.doRead(RepositoryItemReader.java:168)
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.read(AbstractItemCountingItemStreamItemReader.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:137)
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy87.read(Unknown Source)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.doRead(SimpleChunkProvider.java:99)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.read(SimpleChunkProvider.java:180)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider$1.doInIteration(SimpleChunkProvider.java:126)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.provide(SimpleChunkProvider.java:118)
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:71)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273)
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258)
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208)
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:148)
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:411)
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136)
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:147)
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy77.run(Unknown Source)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:795)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:785)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kit.migrator.datamigrator.DataMigratorApplication.main(DataMigratorApplication.java:31)
+Caused by: java.lang.IllegalArgumentException: Value must not be null!
+	at org.springframework.util.Assert.notNull(Assert.java:201)
+	at org.springframework.data.jpa.repository.query.ParameterMetadataProvider$ParameterMetadata.prepare(ParameterMetadataProvider.java:236)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetterFactory$CriteriaQueryParameterSetterFactory.getAndPrepare(QueryParameterSetterFactory.java:323)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetterFactory$CriteriaQueryParameterSetterFactory.lambda$create$1(QueryParameterSetterFactory.java:316)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetter$NamedOrIndexedQueryParameterSetter.setParameter(QueryParameterSetter.java:87)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bind(ParameterBinder.java:82)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bind(ParameterBinder.java:74)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bindAndPrepare(ParameterBinder.java:95)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.invokeBinding(PartTreeJpaQuery.java:324)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.createQuery(PartTreeJpaQuery.java:243)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.doCreateQuery(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.createQuery(AbstractJpaQuery.java:227)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$PagedExecution.doExecute(JpaQueryExecution.java:175)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:152)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:131)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 75 common frames omitted
+2024-04-18 11:49:27,822 INFO org.springframework.batch.core.step.AbstractStep [main] Step: [migrationStep1] executed in 4s77ms
+2024-04-18 11:49:31,521 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [main] Job: [SimpleJob: [name=migratorJob]] completed with the following parameters: [{}] and the following status: [FAILED] in 12s362ms
+2024-04-18 11:51:12,515 INFO org.springframework.boot.StartupInfoLogger [main] Starting DataMigratorApplication using Java 1.8.0_202 on K-ANWAR-L3 with PID 43308 (E:\Projects\spring-batch\target\classes started by anwarul.islam in E:\Projects\spring-batch)
+2024-04-18 11:51:12,515 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2024-04-18 11:51:12,932 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18 11:51:12,963 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interfaces.
+2024-04-18 11:51:13,248 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-18 11:51:13,263 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.28.Final
+2024-04-18 11:51:13,350 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-18 11:51:13,401 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2024-04-18 11:51:15,391 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-04-18 11:51:15,407 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2024-04-18 11:51:17,159 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-18 11:51:17,175 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18 11:51:17,416 WARN org.springframework.batch.core.listener.AbstractListenerFactoryBean [main] org.springframework.batch.item.ItemReader is an interface. The implementing class will not be queried for annotation based listener configurations. If using @StepScope on a @Bean method, be sure to return the implementing class so listener annotations can be used.
+2024-04-18 11:51:17,463 WARN org.springframework.boot.autoconfigure.batch.JpaBatchConfigurer [main] JPA does not support custom isolation levels, so locks may not be taken when launching Jobs
+2024-04-18 11:51:17,732 INFO org.springframework.batch.core.repository.support.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: SQLSERVER
+2024-04-18 11:51:17,799 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2024-04-18 11:51:17,862 INFO org.springframework.scheduling.concurrent.ExecutorConfigurationSupport [main] Initializing ExecutorService 'taskScheduler'
+2024-04-18 11:51:17,878 INFO org.springframework.boot.StartupInfoLogger [main] Started DataMigratorApplication in 5.627 seconds (JVM running for 6.339)
+2024-04-18 11:51:17,878 INFO org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner [main] Running default command line with: []
+2024-04-18 11:51:23,670 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [scheduling-1] Job: [SimpleJob: [name=migratorJob]] launched with the following parameters: [{FROM_DATE=1710827477878, TO_DATE=1713505877878, TRACE_ID=037e12a7-ff61-46d7-bc12-956f2036968b}]
+2024-04-18 11:51:28,791 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [main] Job: [SimpleJob: [name=migratorJob]] launched with the following parameters: [{}]
+2024-04-18 11:51:29,547 INFO org.springframework.batch.core.job.SimpleStepHandler [scheduling-1] Executing step: [migrationStep1]
+2024-04-18 11:51:35,244 INFO org.springframework.batch.core.job.SimpleStepHandler [main] Executing step: [migrationStep1]
+2024-04-18 11:51:38,426 ERROR org.springframework.batch.core.step.AbstractStep [main] Encountered an error executing step migrationStep1 in job migratorJob
+org.springframework.dao.InvalidDataAccessApiUsageException: Value must not be null!; nested exception is java.lang.IllegalArgumentException: Value must not be null!
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:374)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:235)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:551)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:242)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:145)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy83.findBeneficiaryByCreatedBetween(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:283)
+	at org.springframework.batch.item.data.RepositoryItemReader.doInvoke(RepositoryItemReader.java:260)
+	at org.springframework.batch.item.data.RepositoryItemReader.doPageRead(RepositoryItemReader.java:223)
+	at org.springframework.batch.item.data.RepositoryItemReader.doRead(RepositoryItemReader.java:168)
+	at org.springframework.batch.item.support.AbstractItemCountingItemStreamItemReader.read(AbstractItemCountingItemStreamItemReader.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.doProceed(DelegatingIntroductionInterceptor.java:137)
+	at org.springframework.aop.support.DelegatingIntroductionInterceptor.invoke(DelegatingIntroductionInterceptor.java:124)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy87.read(Unknown Source)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.doRead(SimpleChunkProvider.java:99)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.read(SimpleChunkProvider.java:180)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider$1.doInIteration(SimpleChunkProvider.java:126)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.item.SimpleChunkProvider.provide(SimpleChunkProvider.java:118)
+	at org.springframework.batch.core.step.item.ChunkOrientedTasklet.execute(ChunkOrientedTasklet.java:71)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:407)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$ChunkTransactionCallback.doInTransaction(TaskletStep.java:331)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:140)
+	at org.springframework.batch.core.step.tasklet.TaskletStep$2.doInChunkContext(TaskletStep.java:273)
+	at org.springframework.batch.core.scope.context.StepContextRepeatCallback.doInIteration(StepContextRepeatCallback.java:82)
+	at org.springframework.batch.repeat.support.RepeatTemplate.getNextResult(RepeatTemplate.java:375)
+	at org.springframework.batch.repeat.support.RepeatTemplate.executeInternal(RepeatTemplate.java:215)
+	at org.springframework.batch.repeat.support.RepeatTemplate.iterate(RepeatTemplate.java:145)
+	at org.springframework.batch.core.step.tasklet.TaskletStep.doExecute(TaskletStep.java:258)
+	at org.springframework.batch.core.step.AbstractStep.execute(AbstractStep.java:208)
+	at org.springframework.batch.core.job.SimpleStepHandler.handleStep(SimpleStepHandler.java:148)
+	at org.springframework.batch.core.job.AbstractJob.handleStep(AbstractJob.java:411)
+	at org.springframework.batch.core.job.SimpleJob.doExecute(SimpleJob.java:136)
+	at org.springframework.batch.core.job.AbstractJob.execute(AbstractJob.java:320)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher$1.run(SimpleJobLauncher.java:147)
+	at org.springframework.core.task.SyncTaskExecutor.execute(SyncTaskExecutor.java:50)
+	at org.springframework.batch.core.launch.support.SimpleJobLauncher.run(SimpleJobLauncher.java:140)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.batch.core.configuration.annotation.SimpleBatchConfiguration$PassthruAdvice.invoke(SimpleBatchConfiguration.java:128)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:215)
+	at com.sun.proxy.$Proxy77.run(Unknown Source)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.execute(JobLauncherApplicationRunner.java:199)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.executeLocalJobs(JobLauncherApplicationRunner.java:173)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.launchJobFromProperties(JobLauncherApplicationRunner.java:160)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:155)
+	at org.springframework.boot.autoconfigure.batch.JobLauncherApplicationRunner.run(JobLauncherApplicationRunner.java:150)
+	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:795)
+	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:785)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kit.migrator.datamigrator.DataMigratorApplication.main(DataMigratorApplication.java:31)
+Caused by: java.lang.IllegalArgumentException: Value must not be null!
+	at org.springframework.util.Assert.notNull(Assert.java:201)
+	at org.springframework.data.jpa.repository.query.ParameterMetadataProvider$ParameterMetadata.prepare(ParameterMetadataProvider.java:236)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetterFactory$CriteriaQueryParameterSetterFactory.getAndPrepare(QueryParameterSetterFactory.java:323)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetterFactory$CriteriaQueryParameterSetterFactory.lambda$create$1(QueryParameterSetterFactory.java:316)
+	at org.springframework.data.jpa.repository.query.QueryParameterSetter$NamedOrIndexedQueryParameterSetter.setParameter(QueryParameterSetter.java:87)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bind(ParameterBinder.java:82)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bind(ParameterBinder.java:74)
+	at org.springframework.data.jpa.repository.query.ParameterBinder.bindAndPrepare(ParameterBinder.java:95)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.invokeBinding(PartTreeJpaQuery.java:324)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.createQuery(PartTreeJpaQuery.java:243)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.doCreateQuery(PartTreeJpaQuery.java:106)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.createQuery(AbstractJpaQuery.java:227)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$PagedExecution.doExecute(JpaQueryExecution.java:175)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:88)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:155)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:143)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:137)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:121)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:152)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:131)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137)
+	... 75 common frames omitted
+2024-04-18 11:51:39,547 INFO org.springframework.batch.core.step.AbstractStep [main] Step: [migrationStep1] executed in 4s303ms
+2024-04-18 11:51:43,536 INFO org.springframework.batch.core.launch.support.SimpleJobLauncher$1 [main] Job: [SimpleJob: [name=migratorJob]] completed with the following parameters: [{}] and the following status: [FAILED] in 13s153ms
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> cfd6ac44-60d3-40d4-a0ac-ac89caf2e92f
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 73cdb543-5747-4c5d-8128-afbcced12b4e
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> e69a6b92-e920-48b0-9c7a-6e147a6bae41
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> efc4b769-555f-4083-a0d9-fcd4cab0340e
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 1b960a16-4be2-4d97-97ca-3c7e9e3763e9
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> dabd9223-bdad-4e45-881b-378288782cea
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 35c9f330-ff44-474b-ad33-da333d6a96a9
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 8a4e1228-11ef-4789-8431-e1470348a2ba
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> deba5a13-ca9d-4749-89ab-65baa552d131
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 24e3872b-ed7a-4263-a5fe-7221d400dba8
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 92921498-a886-4371-b732-0da93c2d8ddd
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 70aa9064-2e40-4eeb-969c-f658cffc764f
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 8a25ecfa-36f7-4d94-b8b5-529e2835129c
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 7e72d5c5-02f7-4164-a188-f9100a65b849
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 5cf4a232-b90d-46e1-9690-e917cd99970d
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> bc5339ac-7ca3-4a0e-9f6b-e63f73cacfc2
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> ea0eef18-b6ea-4fc1-abfa-88e1caf5f58e
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 2f171f3d-9d2f-4067-b9a0-31b8cf69a035
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> b521b362-2c04-4665-b09c-d951190b8660
+2024-04-18 11:52:24,032 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> a45c96b7-bb72-4bfd-8fb0-5c6f42cb32aa
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> dd00bd49-8eb8-4cea-bc91-1119d5de8716
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> fad5d1a0-584e-4bab-92f4-6d6a11860e6e
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 586378b8-abb4-4f06-b334-925c2c1b48b8
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> e13b6d68-49ad-40f8-8f37-79d4ab8de024
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 73d38b1b-ed59-4aab-80dc-22db7c8c743e
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 43cb6542-40cb-4815-ba5d-c77f9544f9c8
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> b00cee6b-caed-4221-91c7-d062204c6d05
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 5cc34697-f3b6-4e12-80d9-24c95e24275f
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> a675c322-52c8-4d88-811c-b766a832590a
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> f3b7b957-66ec-4b5e-bd98-cbe41f766c4c
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> ff97e449-c80c-4004-928d-a28604ea4123
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 7302d468-a2a0-4fdf-8ddd-169c35450de6
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> dd06c258-4880-42b9-a5ac-2c594246fec7
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 421117ba-d4f6-4788-9503-db1f236edc39
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 6d87966a-6514-4f56-a3dc-030d11f3e07f
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 9272d90f-ae60-4837-ae01-469c182acd40
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 44749d05-152b-4959-9ca9-2fbcc235f7ea
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 45c5e398-f138-4ee2-b0e7-bc911f213718
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 82dc584e-9bdf-4809-8637-8172f6583718
+2024-04-18 11:53:17,172 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 17c3ac05-4b4f-4148-8234-cc9f78d73417
+2024-04-18 11:54:14,003 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 230cf7a4-9838-45cb-af0a-3529a062952e
+2024-04-18 11:54:14,003 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 31616ff9-4513-46a7-a129-1a12e0d6a0bb
+2024-04-18 11:54:14,003 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 673e3184-30bb-435f-abb2-ce2582a16d78
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> f0cfd69d-4d5f-4deb-8dd6-5a55b934b330
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> d6476d8e-9ddc-4285-8d87-5a0b3b7f5e61
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 812772d6-206c-455d-a416-7d33e9a1d3cf
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 72e07ce6-df5d-40bc-8973-737fb84c3aa0
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 369c46ee-db54-4dc2-98ff-68084f2f45c4
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 51ee7116-ee25-42d7-920f-cc154f77a3d5
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 9ab7620f-3baf-43b0-86dc-5f6a55e0aa5d
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> c64e69a8-e6fa-4d38-bc87-f32566d00046
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 8fd5f233-b4ef-4ba5-b6b4-9e20165f90e0
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> ff0339e5-f0dd-4f50-b122-db291b33bfd9
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> bc76e9bd-3c8a-4b8c-adec-fcfaaffed66d
+2024-04-18 11:54:14,004 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 67030752-ecb0-4a3a-989d-9ebe94a44c60
+2024-04-18 11:54:14,005 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> e751dd8f-f90c-43e0-a363-b1014bc5a371
+2024-04-18 11:54:14,005 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 60db50e7-20dc-414c-9e0f-fb6c515e636d
+2024-04-18 11:54:14,005 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 38140892-9a64-4105-82a1-d0525b9c84bf
+2024-04-18 11:54:14,005 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 18f4b40d-ca62-408e-ae59-b74fea33f003
+2024-04-18 11:54:14,005 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 75f2f5a1-20e5-459a-9d1d-d0f0758c2c95
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 1acbad75-4e5a-4682-abb0-de4c74443d67
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> e6bb2f4f-a8a8-496d-844d-f985befa7aa2
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> b869fbe2-a856-4818-8596-c89f6d48bde2
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 1555a244-6806-4b42-a76c-83388600a93f
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 6a58290b-c88d-4d20-9702-59a95e3d2d37
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> ebb593a7-81f4-4f27-9da5-b488f26f2477
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 1d1b0336-e5aa-4cc4-b141-afbd7172984b
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 9dd2a947-d6c2-40ba-b03b-8dacb93f17b1
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> a3a48b84-f6f8-4bb8-9add-d8920877dbbd
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 71b34a88-556b-4910-8753-5398a19dc015
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 3742cf5a-809d-483a-8015-925d19004482
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 07cc87c8-bf19-4a23-8961-13bb17b40713
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 75dd1e87-a5e2-44c0-a303-10e3e0867152
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 69d8a1e6-3681-41f5-9ac5-c0e8b0f4d360
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 641992eb-3d74-4f7a-943c-700d8193ee56
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> de720c36-aaf9-48a9-bfd3-92336a9a6d25
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 62643805-c3b8-4287-ab13-1601c353aace
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> fa930338-b416-450b-82eb-929e306261f8
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> f67c48e1-29f7-4e87-aaf6-eb9fc025257b
+2024-04-18 11:55:06,386 INFO com.kit.migrator.datamigrator.service.BeneficiaryWriter [scheduling-1]  >>> 2cbae858-3257-4354-b868-e98dc2e8bd0a
+2024-04-18 16:44:05,905 INFO org.springframework.boot.StartupInfoLogger [main] Starting DataMigratorApplication using Java 1.8.0_202 on K-ANWAR-L3 with PID 28844 (E:\Projects\spring-batch\target\classes started by anwarul.islam in E:\Projects\spring-batch)
+2024-04-18 16:44:05,905 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2024-04-18 16:44:06,517 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-18 16:44:06,549 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interfaces.
+2024-04-18 16:44:06,877 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [main] Tomcat initialized with port(s): 8080 (http)
+2024-04-18 16:44:06,892 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing ProtocolHandler ["http-nio-8080"]
+2024-04-18 16:44:06,895 INFO org.apache.juli.logging.DirectJDKLog [main] Starting service [Tomcat]
+2024-04-18 16:44:06,896 INFO org.apache.juli.logging.DirectJDKLog [main] Starting Servlet engine: [Apache Tomcat/9.0.43]
+2024-04-18 16:44:06,977 INFO org.apache.juli.logging.DirectJDKLog [main] Initializing Spring embedded WebApplicationContext
+2024-04-18 16:44:06,977 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [main] Root WebApplicationContext: initialization completed in 1017 ms
+2024-04-18 16:44:07,161 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-18 16:44:07,209 INFO org.hibernate.Version [main] HHH000412: Hibernate ORM core version 5.4.28.Final
+2024-04-18 16:44:07,306 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [main] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-18 16:44:07,448 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2024-04-18 16:44:09,354 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2024-04-18 16:44:09,369 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.SQLServer2012Dialect
+2024-04-18 16:44:11,144 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-18 16:44:11,144 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18 16:44:11,444 WARN org.springframework.context.support.AbstractApplicationContext [main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataMigratorApplication': Unsatisfied dependency expressed through field 'job'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migratorJob' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'job' parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migrationStep1' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'migrationStep1' parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'beneficiaryWriter': Unsatisfied dependency expressed through field 'gateway'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+2024-04-18 16:44:11,444 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [main] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-18 16:44:11,444 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown initiated...
+2024-04-18 16:44:12,046 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Shutdown completed.
+2024-04-18 16:44:12,046 INFO org.apache.juli.logging.DirectJDKLog [main] Stopping service [Tomcat]
+2024-04-18 16:44:12,046 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [main] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-04-18 16:44:12,077 ERROR org.springframework.boot.SpringApplication [main] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataMigratorApplication': Unsatisfied dependency expressed through field 'job'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migratorJob' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'job' parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migrationStep1' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'migrationStep1' parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'beneficiaryWriter': Unsatisfied dependency expressed through field 'gateway'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1413)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:582)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kit.migrator.datamigrator.DataMigratorApplication.main(DataMigratorApplication.java:31)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migratorJob' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'job' parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migrationStep1' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'migrationStep1' parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'beneficiaryWriter': Unsatisfied dependency expressed through field 'gateway'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'migrationStep1' defined in class path resource [com/kit/migrator/datamigrator/config/BatchConfig.class]: Unsatisfied dependency expressed through method 'migrationStep1' parameter 2; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'beneficiaryWriter': Unsatisfied dependency expressed through field 'gateway'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 34 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'beneficiaryWriter': Unsatisfied dependency expressed through field 'gateway'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1413)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 48 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'misGateway': Unsatisfied dependency expressed through field 'restTemplate'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:660)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:640)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:119)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1413)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:601)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 63 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'restTemplate' defined in class path resource [com/kit/migrator/datamigrator/config/RestTemplateConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1380)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1300)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:657)
+	... 77 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.client.RestTemplate]: Factory method 'restTemplate' threw exception; nested exception is java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 90 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: org/apache/http/impl/client/HttpClients
+	at org.springframework.http.client.HttpComponentsClientHttpRequestFactory.<init>(HttpComponentsClientHttpRequestFactory.java:79)
+	at com.kit.migrator.datamigrator.config.RestTemplateConfig.restTemplate(RestTemplateConfig.java:17)
+	at com.kit.migrator.datamigrator.config.RestTemplateConfig$$EnhancerBySpringCGLIB$$d9d9327b.CGLIB$restTemplate$0(<generated>)
+	at com.kit.migrator.datamigrator.config.RestTemplateConfig$$EnhancerBySpringCGLIB$$d9d9327b$$FastClassBySpringCGLIB$$b6b9d64c.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+	at com.kit.migrator.datamigrator.config.RestTemplateConfig$$EnhancerBySpringCGLIB$$d9d9327b.restTemplate(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 91 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.apache.http.impl.client.HttpClients
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 103 common frames omitted

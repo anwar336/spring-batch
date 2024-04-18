@@ -15,7 +15,6 @@ import lombok.Data;
  *
  * @author anwar
  */
-@Data
 public class AddressDto implements Serializable{
     private Integer stateId;
     private Integer countyId;
@@ -32,5 +31,36 @@ public class AddressDto implements Serializable{
         this.payam = address.getPayam();
         this.boma = Utils.isNull(address.getBoma()) ? null : address.getBoma()+"";
     }
-    
+
+    public Integer getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(Integer stateId) {
+        this.stateId = stateId;
+    }
+
+    public Integer getCountyId() {
+        return countyId;
+    }
+
+    public void setCountyId(Integer countyId) {
+        this.countyId = countyId;
+    }
+
+    public Integer getPayam() {
+        return payam;
+    }
+
+    public void setPayam(Integer payam) {
+        this.payam = payam;
+    }
+
+    public String getBoma() {
+        return boma;
+    }
+
+    public void setBoma(String boma) {
+        this.boma = boma;
+    }
 }

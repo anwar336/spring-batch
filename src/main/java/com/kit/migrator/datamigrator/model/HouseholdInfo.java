@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Entity
 @Table(name = "HOUSEHOLD_INFO")
-@Data
 public class HouseholdInfo {
 
     @Id
@@ -38,4 +37,84 @@ public class HouseholdInfo {
 
     @Column(name = "FEMALE_CHORINAL_ILL")
     private Integer femaleChronicalIll;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public Integer getMaleTotal() {
+        return maleTotal;
+    }
+
+    public void setMaleTotal(Integer maleTotal) {
+        this.maleTotal = maleTotal;
+    }
+
+    public Integer getMaleBoth() {
+        return maleBoth;
+    }
+
+    public void setMaleBoth(Integer maleBoth) {
+        this.maleBoth = maleBoth;
+    }
+
+    public Integer getMaleDisable() {
+        return maleDisable;
+    }
+
+    public void setMaleDisable(Integer maleDisable) {
+        this.maleDisable = maleDisable;
+    }
+
+    public Integer getMaleChronicalIll() {
+        return maleChronicalIll;
+    }
+
+    public void setMaleChronicalIll(Integer maleChronicalIll) {
+        this.maleChronicalIll = maleChronicalIll;
+    }
+
+    public Integer getFemaleTotal() {
+        return femaleTotal;
+    }
+
+    public void setFemaleTotal(Integer femaleTotal) {
+        this.femaleTotal = femaleTotal;
+    }
+
+    public Integer getFemaleBoth() {
+        return femaleBoth;
+    }
+
+    public void setFemaleBoth(Integer femaleBoth) {
+        this.femaleBoth = femaleBoth;
+    }
+
+    public Integer getFemaleDisable() {
+        return femaleDisable;
+    }
+
+    public void setFemaleDisable(Integer femaleDisable) {
+        this.femaleDisable = femaleDisable;
+    }
+
+    public Integer getFemaleChronicalIll() {
+        return femaleChronicalIll;
+    }
+
+    public void setFemaleChronicalIll(Integer femaleChronicalIll) {
+        this.femaleChronicalIll = femaleChronicalIll;
+    }
 }

@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Entity
 @Table(name = "LOCATION")
-@Data
 public class Location {
 
     @Id
@@ -17,4 +16,28 @@ public class Location {
 
     @Column(name = "LON")
     private Double lon;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLon() {
+        return lon;
+    }
+
+    public void setLon(Double lon) {
+        this.lon = lon;
+    }
 }
