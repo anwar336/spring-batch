@@ -1,7 +1,9 @@
 package com.kit.migrator.datamigrator.gateway.model;
 
+import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
+import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -119,6 +121,7 @@ public class MisRequestModel {
                 this.selection_reason = dto.getSelectionReason().get(0).name();
             }
         }
-
+        this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
+        this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
     }
 }
