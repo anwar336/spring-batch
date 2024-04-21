@@ -182,6 +182,9 @@ public class Beneficiary {
 
     @Column(name = "UPDATED_BY")
     private Long updatedBy;
+    
+    @Column(name = "MIS_SYNC_STATUS")
+    private Integer misSyncStatus;
 
     @Version
     @Column(name = "VERSION", nullable = false)
