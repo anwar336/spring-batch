@@ -11,9 +11,7 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
@@ -27,9 +25,9 @@ import org.springframework.data.domain.Sort;
 
 import java.util.*;
 
-@Configuration
-@EnableBatchProcessing
-public class BatchConfig {
+//@Configuration
+//@EnableBatchProcessing
+public class BatchConfigES {
 
     @Autowired
     BeneficiaryRepository beneficiaryRepository;
@@ -46,15 +44,14 @@ public class BatchConfig {
 
         Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
         Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
-        List<Object> parameters = new ArrayList<>();
+        List<Date> parameters = new ArrayList<>();
         parameters.add(fromDate);
         parameters.add(toDate);
-        parameters.add(0);
         RepositoryItemReader<Beneficiary> reader = new RepositoryItemReader<>();
         reader.setRepository(beneficiaryRepository);
-        reader.setMethodName("findBeneficiaryByCreatedBetweenAndMisSyncStatus");
+        reader.setMethodName("findBeneficiaryByCreatedBetween");
         reader.setArguments(parameters);
-        reader.setPageSize(100);
+        reader.setPageSize(20);
 
         HashMap<String, Sort.Direction> sorts = new HashMap<>();
         sorts.put("id", Sort.Direction.ASC);
@@ -79,12 +76,12 @@ public class BatchConfig {
     protected Step migrationStep1(ItemReader<Beneficiary> beneficiaryReader,
                                   ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryProcessor,
                                   ItemWriter<BeneficiaryDto> beneficiaryWriter) {
-        return stepBuilderFactory.get("migrationStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryWriter).build();
+        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryWriter).build();
     }
 
-    @Bean(name = "migratorJob")
-    public Job job(JobRepository jobRepository, @Qualifier("migrationStep1") Step step1) {
-        return jobBuilderFactory.get("migratorJob").start(step1).build();
+    @Bean(name = "esJob")
+    public Job job(JobRepository jobRepository, @Qualifier("esStep1") Step step1) {
+        return jobBuilderFactory.get("esJob").start(step1).build();
     }
 
 }

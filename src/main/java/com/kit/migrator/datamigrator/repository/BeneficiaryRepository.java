@@ -11,4 +11,5 @@ import java.util.Date;
 @Repository
 public interface BeneficiaryRepository extends PagingAndSortingRepository<Beneficiary, Long> {
     Page<Beneficiary> findBeneficiaryByCreatedBetweenAndMisSyncStatus(Date fromDate, Date toDate, Integer misSyncStatus, Pageable pageable);
+    Page<Beneficiary> findBeneficiaryByCreatedBetween(Date fromDate, Date toDate, Pageable pageable);
 }
