@@ -3,6 +3,7 @@ package com.kit.migrator.datamigrator.config;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.model.Beneficiary;
 import com.kit.migrator.datamigrator.repository.BeneficiaryRepository;
+import com.kit.migrator.datamigrator.service.BeneficiaryESWriter;
 import com.kit.migrator.datamigrator.service.BeneficiaryProcessor;
 import com.kit.migrator.datamigrator.service.BeneficiaryWriter;
 import org.springframework.batch.core.Job;
@@ -25,7 +26,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.*;
 
-//@Configuration
+@Configuration
 //@EnableBatchProcessing
 public class BatchConfigES {
 
@@ -66,17 +67,17 @@ public class BatchConfigES {
     }
 
     @Bean
-    public ItemWriter<BeneficiaryDto> beneficiaryWriter()
+    public ItemWriter<BeneficiaryDto> beneficiaryESWriter()
             throws Exception {
-        return new BeneficiaryWriter();
+        return new BeneficiaryESWriter();
     }
 
 
     @Bean
-    protected Step migrationStep1(ItemReader<Beneficiary> beneficiaryReader,
+    protected Step esStep1(ItemReader<Beneficiary> beneficiaryReader,
                                   ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryProcessor,
-                                  ItemWriter<BeneficiaryDto> beneficiaryWriter) {
-        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryWriter).build();
+                                  ItemWriter<BeneficiaryDto> beneficiaryESWriter) {
+        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryESWriter).build();
     }
 
     @Bean(name = "esJob")

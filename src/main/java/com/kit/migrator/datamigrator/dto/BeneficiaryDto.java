@@ -24,6 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 public class BeneficiaryDto implements Serializable {
+
     private String applicationId;
     private String respondentFirstName;
     private String respondentMiddleName;
@@ -63,17 +64,16 @@ public class BeneficiaryDto implements Serializable {
     private Boolean isOtherMemberPerticipating;
     private NonPerticipationReasonEnum notPerticipationReason;
     private String notPerticipationOtherReason;
-    
+
     private List<NomineeDto> nominees;
     private AlternateDto alternatePayee1;
     private AlternateDto alternatePayee2;
-    
+
     private Long createdBy;
     private Long updatedBy;
-    
+
     private Date created;
     private Date updated;
-
 
     public BeneficiaryDto(Beneficiary beneficiary) {
         if (beneficiary != null) {
@@ -119,6 +119,14 @@ public class BeneficiaryDto implements Serializable {
                 this.selectionReason.add(SelectionReasonEnum.getByName(beneficiary.getSelectionReasons()));
             }
 
+            if (beneficiary.getSelectionReasons() != null && beneficiary.getSelectionReasons().length() > 0) {
+                this.setSelectionReason(new ArrayList<>());
+                String[] reasons = beneficiary.getSelectionReasons().split(",");
+                for (String reason : reasons) {
+                    this.getSelectionReason().add(SelectionReasonEnum.valueOf(reason));
+                }
+            }
+
             this.address = new AddressDto(beneficiary.getAddress());
 
             this.location = new LocationDto(beneficiary.getLocation());
@@ -133,7 +141,7 @@ public class BeneficiaryDto implements Serializable {
 
             this.householdMember35 = new HouseholdInfo(beneficiary.getHouseholdMember5());
 
-            this.householdMember64 =  new HouseholdInfo(beneficiary.getHouseholdMember64());
+            this.householdMember64 = new HouseholdInfo(beneficiary.getHouseholdMember64());
 
             this.householdMember65 = new HouseholdInfo(beneficiary.getHouseholdMember5());
 
@@ -152,11 +160,11 @@ public class BeneficiaryDto implements Serializable {
             this.alternatePayee2 = new AlternateDto(beneficiary.getAlternatePayee2());
 
             this.createdBy = beneficiary.getCreatedBy();
-            if (beneficiary.getNominees() != null && beneficiary.getNominees().size() >0) {
+            if (beneficiary.getNominees() != null && beneficiary.getNominees().size() > 0) {
                 this.nominees = new ArrayList<>();
-                beneficiary.getNominees().forEach(n->nominees.add(new NomineeDto(n)));
+                beneficiary.getNominees().forEach(n -> nominees.add(new NomineeDto(n)));
             }
-            
+
             this.created = beneficiary.getCreated();
             this.updated = beneficiary.getUpdated();
         }
