@@ -139,11 +139,11 @@ public class BeneficiaryDto implements Serializable {
 
             this.householdMember17 = new HouseholdInfo(beneficiary.getHouseholdMember17());
 
-            this.householdMember35 = new HouseholdInfo(beneficiary.getHouseholdMember5());
+            this.householdMember35 = new HouseholdInfo(beneficiary.getHouseholdMember35());
 
             this.householdMember64 = new HouseholdInfo(beneficiary.getHouseholdMember64());
 
-            this.householdMember65 = new HouseholdInfo(beneficiary.getHouseholdMember5());
+            this.householdMember65 = new HouseholdInfo(beneficiary.getHouseholdMember65());
 
             this.isReadWrite = beneficiary.getIsReadWrite();
 

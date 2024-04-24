@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class MisRequestModel {
-    private String supervisor_id;
-    private String partner_code;
+    private String supervisor_id; //
+    private String partner_code; // 
     private String household_number;
-    private String beneficiary_type;
-    private String group_number;
-    private String member_number;
+    private String beneficiary_type; //
+    private String group_number; //
+    private String member_number; //
     private String household_size;
     private String household_name;
     private String age;
@@ -23,15 +23,15 @@ public class MisRequestModel {
     private String id_number;
     private String phone_number;
     private String gender;
-    private String female_dependants;
-    private String male_dependants;
+    private String female_dependants; //
+    private String male_dependants; //
     private String zero_five;
     private String six_eighteen;
     private String nineteen_forty_five;
     private String forty_six_sixty_five;
     private String sixty_six;
     private String income_household;
-    private String average_household;
+    private String average_household; //
     private String state;
     private String county;
     private String payam;
@@ -43,7 +43,7 @@ public class MisRequestModel {
     private String status;
     private String created_at;
     private String updated_at;
-    private String alternate_number;
+    private String alternate_number; //
     private String selection_criteria;
     private String selection_reason;
     private String liTemplate;
