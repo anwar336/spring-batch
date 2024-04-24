@@ -68,6 +68,7 @@ public class BeneficiaryDto implements Serializable {
     private List<NomineeDto> nominees;
     private AlternateDto alternatePayee1;
     private AlternateDto alternatePayee2;
+    private List<BiometricDto> biometrics;
 
     private Long createdBy;
     private Long updatedBy;

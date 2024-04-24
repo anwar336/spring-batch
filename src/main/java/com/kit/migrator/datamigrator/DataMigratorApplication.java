@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.util.Date;
 import java.util.UUID;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @SpringBootApplication
 @EnableScheduling
@@ -26,7 +27,8 @@ public class DataMigratorApplication {
     private JobLauncher jobLauncher;
 
     @Autowired
-    private Job job;
+    @Qualifier("migratorJob")
+    private Job migratorJob;
 
     public static void main(String[] args) {
         SpringApplication.run(DataMigratorApplication.class, args);
@@ -48,7 +50,7 @@ public class DataMigratorApplication {
                     .addString(BatchConstants.TRACE_ID, UUID.randomUUID().toString())
                     .toJobParameters();
 
-            JobExecution jobExecution1 = jobLauncher.run(job, jobParameters);
+            JobExecution jobExecution1 = jobLauncher.run(migratorJob, jobParameters);
             if (!jobExecution1.getStatus().isUnsuccessful()) {
                 log.info("migrator job finished");
             }
