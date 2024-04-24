@@ -28,6 +28,9 @@ import java.util.*;
 @Configuration
 @EnableBatchProcessing
 public class BatchConfig {
+    
+    @Value(value = "${batch.migrator.reader.size:20}")
+    private Integer fetchSize;
 
     @Autowired
     BeneficiaryRepository beneficiaryRepository;
@@ -52,7 +55,7 @@ public class BatchConfig {
         reader.setRepository(beneficiaryRepository);
         reader.setMethodName("findBeneficiaryByCreatedBetweenAndMisSyncStatus");
         reader.setArguments(parameters);
-        reader.setPageSize(100);
+        reader.setPageSize(fetchSize);
 
         HashMap<String, Sort.Direction> sorts = new HashMap<>();
         sorts.put("id", Sort.Direction.ASC);
