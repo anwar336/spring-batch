@@ -39,7 +39,7 @@ public class BatchConfigES {
 
     @Bean
     @StepScope
-    public ItemReader<Beneficiary> beneficiaryReader(@Value("#{jobParameters}") Map<String, Object> jobParameters) throws Exception {
+    public ItemReader<Beneficiary> beneficiaryESReader(@Value("#{jobParameters}") Map<String, Object> jobParameters) throws Exception {
 
         Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
         Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
@@ -60,7 +60,7 @@ public class BatchConfigES {
     }
 
     @Bean
-    public ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryProcessor() {
+    public ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryESProcessor() {
         return new BeneficiaryProcessor();
     }
 
@@ -72,10 +72,10 @@ public class BatchConfigES {
 
 
     @Bean
-    protected Step esStep1(ItemReader<Beneficiary> beneficiaryReader,
-                                  ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryProcessor,
+    protected Step esStep1(ItemReader<Beneficiary> beneficiaryESReader,
+                                  ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryESProcessor,
                                   ItemWriter<BeneficiaryDto> beneficiaryESWriter) {
-        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryESWriter).build();
+        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryESReader).processor(beneficiaryESProcessor).writer(beneficiaryESWriter).build();
     }
 
     @Bean(name = "esJob")
