@@ -9,13 +9,12 @@ import com.kit.migrator.datamigrator.gateway.MisGateway;
 import com.kit.migrator.datamigrator.gateway.model.MisRequestModel;
 import com.kit.migrator.datamigrator.gateway.model.MisResponseModel;
 import com.kit.migrator.datamigrator.repository.BeneficiaryDao;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+import java.util.Base64;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
 
 @Slf4j
 public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
@@ -77,52 +76,52 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
                 case LT:
                     fd.setWsqLt(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case LI:
                     fd.setWsqLi(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case LM:
                     fd.setWsqLm(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case LR:
                     fd.setWsqLr(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case LL:
                     fd.setWsqLs(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case RT:
                     fd.setWsqRt(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case RI:
                     fd.setWsqRi(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case RM:
                     fd.setWsqRm(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case RR:
                     fd.setWsqRr(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 case RL:
                     fd.setWsqRs(bDto.getBiometricData());
                     p.setFingerData(fd);
-                    requestModel.setLtTemplate(Base64.encode(afisEnroll.generateTemplate(p)));
+                    requestModel.setLtTemplate(Base64.getEncoder().encodeToString(afisEnroll.generateTemplate(p)));
                     break;
                 default:
                     break;
