@@ -31,7 +31,7 @@ public class MisRequestModel {
     private String forty_six_sixty_five;
     private String sixty_six;
     private String income_household;
-    private String average_household; //
+    private String average_household;
     private String state;
     private String county;
     private String payam;
@@ -62,6 +62,10 @@ public class MisRequestModel {
         this.member_number = dto.getHouseholdSize() != null ? dto.getHouseholdSize().toString() : null;
         this.household_name = dto.getRespondentFirstName() + " " +  dto.getRespondentMiddleName() + " " + dto.getRespondentLastName();
         this.age = dto.getRespondentAge() != null ? dto.getRespondentAge().toString() : null;
+        this.id_number = dto.getRespondentId();
+        this.phone_number = dto.getRespondentPhoneNo();
+        
+        
         if(dto.getSpouseFirstName() != null && dto.getSpouseFirstName().length() > 0){
             this.spouse_name = dto.getSpouseFirstName() + " " + dto.getSpouseMiddleName() + " " + dto.getSpouseLastName();
         }
@@ -72,21 +76,51 @@ public class MisRequestModel {
             this.gender = "F";
         }
         Integer zeroFive = 0;
+        Integer maleTotal = 0;
+        Integer femaleTotal = 0;
         if(dto.getHouseholdMember2() != null) {
+            maleTotal += dto.getHouseholdMember2().getMaleTotal() != null ? dto.getHouseholdMember2().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember2().getFemaleTotal() != null ? dto.getHouseholdMember2().getFemaleTotal() : 0;
             zeroFive = (dto.getHouseholdMember2().getMaleTotal() != null ? dto.getHouseholdMember2().getMaleTotal() : 0)
                         + (dto.getHouseholdMember2().getFemaleTotal() != null ? dto.getHouseholdMember2().getFemaleTotal() : 0);
-            this.zero_five = zeroFive.toString();
+            
         }
+        if(dto.getHouseholdMember5() != null) {
+            maleTotal += dto.getHouseholdMember5().getMaleTotal() != null ? dto.getHouseholdMember5().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember5().getFemaleTotal() != null ? dto.getHouseholdMember5().getFemaleTotal() : 0;
+            
+            zeroFive += (dto.getHouseholdMember5().getMaleTotal() != null ? dto.getHouseholdMember5().getMaleTotal() : 0)
+                        + (dto.getHouseholdMember5().getFemaleTotal() != null ? dto.getHouseholdMember5().getFemaleTotal() : 0);
+            
+            
+        }
+        this.zero_five += zeroFive.toString();
 
         Integer sixEighteen = 0;
         if(dto.getHouseholdMember17() != null) {
+            maleTotal += dto.getHouseholdMember17().getMaleTotal() != null ? dto.getHouseholdMember17().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember17().getFemaleTotal() != null ? dto.getHouseholdMember17().getFemaleTotal() : 0;
+            
             sixEighteen = (dto.getHouseholdMember17().getMaleTotal() != null ? dto.getHouseholdMember17().getMaleTotal() : 0)
                     + (dto.getHouseholdMember17().getFemaleTotal() != null ? dto.getHouseholdMember17().getFemaleTotal() : 0);
-            this.six_eighteen = sixEighteen.toString();
         }
+        this.six_eighteen = sixEighteen.toString();
+        
+        Integer nineteenFortyFive = 0;
+        if(dto.getHouseholdMember35() != null) {
+            maleTotal += dto.getHouseholdMember35().getMaleTotal() != null ? dto.getHouseholdMember35().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember35().getFemaleTotal() != null ? dto.getHouseholdMember35().getFemaleTotal() : 0;
+            
+            nineteenFortyFive = (dto.getHouseholdMember35().getMaleTotal() != null ? dto.getHouseholdMember35().getMaleTotal() : 0)
+                    + (dto.getHouseholdMember35().getFemaleTotal() != null ? dto.getHouseholdMember35().getFemaleTotal() : 0);
+        }
+        this.nineteen_forty_five = nineteenFortyFive.toString();
 
         Integer fortySixSixtyFive = 0;
         if(dto.getHouseholdMember64() != null) {
+            maleTotal += dto.getHouseholdMember64().getMaleTotal() != null ? dto.getHouseholdMember64().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember64().getFemaleTotal() != null ? dto.getHouseholdMember64().getFemaleTotal() : 0;
+            
             fortySixSixtyFive = (dto.getHouseholdMember64().getMaleTotal() != null ? dto.getHouseholdMember64().getMaleTotal() : 0)
                     + (dto.getHouseholdMember64().getFemaleTotal() != null ? dto.getHouseholdMember64().getFemaleTotal() : 0);
             this.forty_six_sixty_five = fortySixSixtyFive.toString();
@@ -94,13 +128,20 @@ public class MisRequestModel {
 
         Integer sixtySix = 0;
         if(dto.getHouseholdMember65() != null) {
+            maleTotal += dto.getHouseholdMember65().getMaleTotal() != null ? dto.getHouseholdMember65().getMaleTotal() : 0;
+            femaleTotal += dto.getHouseholdMember65().getFemaleTotal() != null ? dto.getHouseholdMember65().getFemaleTotal() : 0;
+            
             sixtySix = (dto.getHouseholdMember65().getMaleTotal() != null ? dto.getHouseholdMember65().getMaleTotal() : 0)
                     + (dto.getHouseholdMember65().getFemaleTotal() != null ? dto.getHouseholdMember65().getFemaleTotal() : 0);
             this.sixty_six = sixtySix.toString();
         }
+        
+        this.female_dependants = femaleTotal.toString();
+        this.male_dependants = maleTotal.toString();
 
         this.income_household = dto.getHouseholdIncomeSource() != null ? dto.getHouseholdIncomeSource().name() : null;
         this.average_household = dto.getHouseholdMonthlyAvgIncome() != null ? dto.getHouseholdMonthlyAvgIncome().toString() : null;
+        this.household_size = dto.getHouseholdSize() != null ? dto.getHouseholdSize().toString() : null;
 
         if(dto.getAddress() != null){
             this.state = dto.getAddress().getStateId() != null ? dto.getAddress().getStateId().toString() : null;
@@ -121,6 +162,16 @@ public class MisRequestModel {
                 this.selection_reason = dto.getSelectionReason().get(0).name();
             }
         }
+        
+        Integer alternateNumber = 0;
+        if(dto.getAlternatePayee1() != null){
+            alternateNumber += 1;
+        }
+        if(dto.getAlternatePayee2() != null){
+            alternateNumber += 1;
+        }
+        this.alternate_number = alternateNumber.toString();
+        
         this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
         this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
         
