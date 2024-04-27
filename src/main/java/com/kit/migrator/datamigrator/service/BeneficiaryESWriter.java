@@ -17,7 +17,7 @@ public class BeneficiaryESWriter implements ItemWriter<BeneficiaryDto> {
             log.info(" >>> " + b.getApplicationId());
             try {
                 IndexResponse response = ESConfig.instance().index(i
-                        -> i.index("INDEX_BENEFICIARY")
+                        -> i.index("index_beneficiary")
                                 .id(b.getApplicationId())
                                 .document(b)
                 );
