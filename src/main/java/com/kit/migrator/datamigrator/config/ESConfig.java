@@ -42,7 +42,7 @@ public class ESConfig {
 
     private static ElasticsearchClient init() {
         RestClient restClient = RestClient.builder(
-                new HttpHost(host, port)).build();
+                new HttpHost("localhost", 9200)).build();
 
         // Create the transport with a Jackson mapper
         ElasticsearchTransport transport = new RestClientTransport(
