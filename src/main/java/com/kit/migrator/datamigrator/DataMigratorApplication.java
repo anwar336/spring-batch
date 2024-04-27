@@ -36,7 +36,6 @@ public class DataMigratorApplication {
     @Qualifier("esJob")
     private Job esJob;
     
-    @Value("${batch.job.name:esJob}")
     private static String jobName;
     
     @Autowired
@@ -44,6 +43,7 @@ public class DataMigratorApplication {
 
 
     public static void main(String[] args) {
+        jobName = args[0];
         SpringApplication.run(DataMigratorApplication.class, args);
     }
 
