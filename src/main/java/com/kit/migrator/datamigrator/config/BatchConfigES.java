@@ -3,6 +3,7 @@ package com.kit.migrator.datamigrator.config;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.model.Beneficiary;
 import com.kit.migrator.datamigrator.repository.BeneficiaryRepository;
+import com.kit.migrator.datamigrator.service.BeneficiaryESProcessor;
 import com.kit.migrator.datamigrator.service.BeneficiaryESWriter;
 import com.kit.migrator.datamigrator.service.BeneficiaryProcessor;
 import org.springframework.batch.core.Job;
@@ -61,7 +62,7 @@ public class BatchConfigES {
 
     @Bean
     public ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryESProcessor() {
-        return new BeneficiaryProcessor();
+        return new BeneficiaryESProcessor();
     }
 
     @Bean
