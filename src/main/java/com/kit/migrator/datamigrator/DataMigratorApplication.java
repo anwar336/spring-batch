@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.UUID;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 @EnableScheduling
@@ -29,6 +31,17 @@ public class DataMigratorApplication {
     @Autowired
     @Qualifier("migratorJob")
     private Job migratorJob;
+    
+    @Autowired
+    @Qualifier("esJob")
+    private Job esJob;
+    
+    @Value("${batch.job.name:esJob}")
+    private static String jobName;
+    
+    @Autowired
+    private ApplicationContext applicationContext;
+
 
     public static void main(String[] args) {
         SpringApplication.run(DataMigratorApplication.class, args);
@@ -36,10 +49,11 @@ public class DataMigratorApplication {
 
     @Scheduled(fixedDelay = 1000 * 60 * 5)
     public void runJob() {
-        launchJob();
+        Job job = applicationContext.getBean(jobName, Job.class);
+        launchJob(job);
     }
 
-    public void launchJob() {
+    public void launchJob(Job job) {
         try {
             Date currentDate = new Date();
             Date fromDate = Utils.addDays(currentDate, -30);
@@ -50,9 +64,9 @@ public class DataMigratorApplication {
                     .addString(BatchConstants.TRACE_ID, UUID.randomUUID().toString())
                     .toJobParameters();
 
-            JobExecution jobExecution1 = jobLauncher.run(migratorJob, jobParameters);
-            if (!jobExecution1.getStatus().isUnsuccessful()) {
-                log.info("migrator job finished");
+            JobExecution jobExecution = jobLauncher.run(job, jobParameters);
+            if (!jobExecution.getStatus().isUnsuccessful()) {
+                log.info("job finished");
             }
         } catch (Exception e) {
             log.error("Failed to run", e);
