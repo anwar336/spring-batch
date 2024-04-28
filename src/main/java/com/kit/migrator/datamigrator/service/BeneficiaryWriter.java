@@ -25,7 +25,7 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
     @Autowired
     BeneficiaryDao dao;
     
-    //@Autowired
+    @Autowired
     private AfisEnroll afisEnroll;
 
     @Override

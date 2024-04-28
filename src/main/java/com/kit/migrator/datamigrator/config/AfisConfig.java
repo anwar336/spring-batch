@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author anwar
  */
-//@Configuration
+@Configuration
 public class AfisConfig {
     
     @Value(value = "${afis.db.connection}")
