@@ -5,50 +5,65 @@
  */
 package com.kit.migrator.datamigrator.config;
 
-import co.elastic.clients.elasticsearch.ElasticsearchClient;
-import co.elastic.clients.json.jackson.JacksonJsonpMapper;
-import co.elastic.clients.transport.ElasticsearchTransport;
-import co.elastic.clients.transport.rest_client.RestClientTransport;
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
+import org.apache.http.message.BasicHeader;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
+import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+import java.util.Base64;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.indices.CreateIndexRequest;
+import org.elasticsearch.client.indices.CreateIndexResponse;
+import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.xcontent.XContentType;
 
 /**
  *
  * @author USER
  */
-
+@Configuration
+@Slf4j
 public class ESConfig {
-    
-    @Value("${elastic.host}")
-    private static String host;
+
+    @Value("${elastic.hosts}")
+    private String hosts;
 
     @Value("${elastic.port}")
-    private static int port;
+    private int port;
 
-    private static ESConfig esClient = null;
-    private static ElasticsearchClient client = null;
-    private ESConfig() {
-    }
+    @Value("${elastic.username}")
+    private String username;
 
-    public static ElasticsearchClient instance() {
-        if (esClient == null) {
-            esClient = new ESConfig();
-            client = esClient.init();
+    @Value("${elastic.password}")
+    private String password;
+
+    @Bean
+    public RestHighLevelClient client() throws Throwable {
+        String[] esHosts = hosts.split(",");
+        HttpHost[] oHosts = new HttpHost[esHosts.length];
+        for (int i = 0; i < esHosts.length; i++) {
+            String[] hostProto = esHosts[i].split("://");
+            oHosts[i] = new HttpHost(hostProto[1], port, hostProto[0]);
         }
-        return client;
+        RestClientBuilder builder = RestClient.builder(oHosts);
+
+        final CredentialsProvider credentialsProvider
+                = new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(AuthScope.ANY,
+                new UsernamePasswordCredentials(username, password));
+        builder.setHttpClientConfigCallback(httpClientBuilder -> httpClientBuilder
+                .setDefaultCredentialsProvider(credentialsProvider));
+        return new RestHighLevelClient(builder);
     }
 
-    private static ElasticsearchClient init() {
-        RestClient restClient = RestClient.builder(
-                new HttpHost("localhost", 9200)).build();
-
-        // Create the transport with a Jackson mapper
-        ElasticsearchTransport transport = new RestClientTransport(
-                restClient, new JacksonJsonpMapper());
-
-        // And create the API client
-        return new ElasticsearchClient(transport);
-    }
 }
