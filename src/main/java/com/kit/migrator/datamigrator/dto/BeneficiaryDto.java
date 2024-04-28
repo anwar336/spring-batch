@@ -15,6 +15,8 @@ import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  *
@@ -23,8 +25,10 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Data
+@Document(indexName = "index_beneficiary")
 public class BeneficiaryDto implements Serializable {
 
+    @Id
     private String applicationId;
     private String respondentFirstName;
     private String respondentMiddleName;
