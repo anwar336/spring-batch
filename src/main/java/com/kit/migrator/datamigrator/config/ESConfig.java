@@ -31,7 +31,7 @@ import org.elasticsearch.xcontent.XContentType;
  *
  * @author USER
  */
-@Configuration
+//@Configuration
 @Slf4j
 public class ESConfig {
 

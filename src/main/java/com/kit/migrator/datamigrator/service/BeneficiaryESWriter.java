@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Slf4j
 public class BeneficiaryESWriter implements ItemWriter<BeneficiaryDto> {
 
-    @Autowired
+    //@Autowired
     private RestHighLevelClient client;
 
     @Autowired
