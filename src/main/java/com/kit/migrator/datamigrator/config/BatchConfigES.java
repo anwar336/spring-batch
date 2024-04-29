@@ -5,7 +5,6 @@ import com.kit.migrator.datamigrator.model.Beneficiary;
 import com.kit.migrator.datamigrator.repository.BeneficiaryRepository;
 import com.kit.migrator.datamigrator.service.BeneficiaryESProcessor;
 import com.kit.migrator.datamigrator.service.BeneficiaryESWriter;
-import com.kit.migrator.datamigrator.service.BeneficiaryProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -24,9 +23,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Sort;
 
 import java.util.*;
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 
 @Configuration
-//@EnableBatchProcessing
+@EnableBatchProcessing
 public class BatchConfigES {
 
     @Autowired

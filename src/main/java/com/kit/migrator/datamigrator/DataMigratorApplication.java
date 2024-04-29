@@ -17,8 +17,6 @@ import java.util.Date;
 import java.util.UUID;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 @EnableScheduling
@@ -29,28 +27,16 @@ public class DataMigratorApplication {
     private JobLauncher jobLauncher;
 
     @Autowired
-    @Qualifier("migratorJob")
-    private Job migratorJob;
-    
-    @Autowired
     @Qualifier("esJob")
     private Job esJob;
     
-    private static String jobName;
-    
-    @Autowired
-    private ApplicationContext applicationContext;
-
-
     public static void main(String[] args) {
-        jobName = args[0];
         SpringApplication.run(DataMigratorApplication.class, args);
     }
 
     @Scheduled(fixedDelay = 1000 * 60 * 5)
     public void runJob() {
-        Job job = applicationContext.getBean(jobName, Job.class);
-        launchJob(job);
+        launchJob(esJob);
     }
 
     public void launchJob(Job job) {
