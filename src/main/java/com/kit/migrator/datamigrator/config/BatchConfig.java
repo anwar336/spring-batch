@@ -1,6 +1,7 @@
 package com.kit.migrator.datamigrator.config;
 
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
+import com.kit.migrator.datamigrator.enums.AfisStatusEnum;
 import com.kit.migrator.datamigrator.model.Beneficiary;
 import com.kit.migrator.datamigrator.repository.BeneficiaryRepository;
 import com.kit.migrator.datamigrator.service.BeneficiaryProcessor;
@@ -48,13 +49,13 @@ public class BatchConfig {
         Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
         Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
         List<Object> parameters = new ArrayList<>();
-        parameters.add("c0134697-f692-4697-85cf-f79e9bb1a97b");
-//        parameters.add(fromDate);
-//        parameters.add(toDate);
-//        parameters.add(0);
+        parameters.add(fromDate);
+        parameters.add(toDate);
+        parameters.add(0);
+        parameters.add(AfisStatusEnum.ENROLLED);
         RepositoryItemReader<Beneficiary> reader = new RepositoryItemReader<>();
         reader.setRepository(beneficiaryRepository);
-        reader.setMethodName("findBeneficiaryByApplicationId");
+        reader.setMethodName("findBeneficiaryByCreatedBetweenAndMisSyncStatusAndAfisStatus");
         reader.setArguments(parameters);
         reader.setPageSize(fetchSize);
 

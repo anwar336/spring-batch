@@ -189,9 +189,5 @@ public class Beneficiary {
     @Version
     @Column(name = "VERSION", nullable = false)
     private Integer version;
-    
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "BIOMETRIC_ID", referencedColumnName = "ID", nullable = false)
-    private Biometric biometric;
 
 }
