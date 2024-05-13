@@ -34,7 +34,7 @@ public class DataMigratorApplication {
         SpringApplication.run(DataMigratorApplication.class, args);
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 5)
+    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
     public void runJob() {
         launchJob(esJob);
     }
@@ -42,7 +42,7 @@ public class DataMigratorApplication {
     public void launchJob(Job job) {
         try {
             Date currentDate = new Date();
-            Date fromDate = Utils.addDays(currentDate, -30);
+            Date fromDate = Utils.addDays(currentDate, -45);
             Date toDate = Utils.addDays(currentDate, 1);
             JobParameters jobParameters = new JobParametersBuilder()
                     .addDate(BatchConstants.FROM_DATE, fromDate)
