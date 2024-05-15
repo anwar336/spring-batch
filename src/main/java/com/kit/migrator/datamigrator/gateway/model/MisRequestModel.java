@@ -9,7 +9,6 @@ import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString
 public class MisRequestModel {
     private String supervisor_id; //
     private String partner_code; // 
@@ -95,7 +94,7 @@ public class MisRequestModel {
             
             
         }
-        this.zero_five += zeroFive.toString();
+        this.zero_five = zeroFive.toString();
 
         Integer sixEighteen = 0;
         if(dto.getHouseholdMember17() != null) {

@@ -25,7 +25,6 @@ public class MisGateway {
     private String authToken;
 
     public MisResponseModel syncData(MisRequestModel request){
-        log.info("[{}]", request.toString());
         String url = baseUrl + "api/v1/addBeneficiarySNSOP";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
