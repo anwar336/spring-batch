@@ -3,12 +3,13 @@ package com.kit.migrator.datamigrator.gateway.model;
 import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
-import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
+@ToString
 public class MisRequestModel {
     private String supervisor_id; //
     private String partner_code; // 
