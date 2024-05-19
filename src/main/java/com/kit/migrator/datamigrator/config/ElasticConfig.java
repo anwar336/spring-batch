@@ -5,6 +5,7 @@
  */
 package com.kit.migrator.datamigrator.config;
 
+import java.time.Duration;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +33,8 @@ public class ElasticConfig {
         ClientConfiguration clientConfiguration
                 = ClientConfiguration.builder()
                 .connectedTo(host)
-                .withBasicAuth(username, password) // put your credentials
+                .withBasicAuth(username, password)
+                .withSocketTimeout(Duration.ofMillis(60000 * 2)) // 2 mins
                 .build();
         return RestClients.create(clientConfiguration).rest();
     }
