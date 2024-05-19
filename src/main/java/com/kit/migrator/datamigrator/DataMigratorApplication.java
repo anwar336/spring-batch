@@ -2,7 +2,6 @@ package com.kit.migrator.datamigrator;
 
 import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.config.BatchConstants;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
