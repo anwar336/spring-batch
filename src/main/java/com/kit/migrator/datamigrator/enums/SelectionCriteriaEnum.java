@@ -12,8 +12,18 @@ import java.util.Arrays;
  * @author anwar
  */
 public enum SelectionCriteriaEnum {
-    LIPW,
-    DIS;
+    LIPW("Component 1 (Public Works)"),
+    DIS("Component 2 (Direct Income Support)");
+    
+    String value;
+    
+    SelectionCriteriaEnum(String value){
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 
     public static SelectionCriteriaEnum getSelectionCriteria(Integer ordinal) {
         if (ordinal == null) {
