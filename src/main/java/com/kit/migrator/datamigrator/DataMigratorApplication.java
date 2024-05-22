@@ -55,7 +55,7 @@ public class DataMigratorApplication {
     public void launchJob(Job job) {
         try {
             Date currentDate = new Date();
-            Date fromDate = Utils.addDays(currentDate, -7);
+            Date fromDate = Utils.addDays(currentDate, -1);
             Date toDate = Utils.addDays(currentDate, 1);
             
             if(!StringUtils.isEmpty(startDateStr)){
