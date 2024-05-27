@@ -74,6 +74,8 @@ public class BeneficiaryDto implements Serializable {
 
     private Date created;
     private Date updated;
+    
+    private String photoUrl;
 
     public BeneficiaryDto(Beneficiary beneficiary) {
         if (beneficiary != null) {

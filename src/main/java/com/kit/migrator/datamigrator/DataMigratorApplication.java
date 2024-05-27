@@ -41,12 +41,7 @@ public class DataMigratorApplication {
 
     public void launchJob(Job job) {
         try {
-            Date currentDate = new Date();
-            Date fromDate = Utils.addDays(currentDate, -30);
-            Date toDate = Utils.addDays(currentDate, 1);
             JobParameters jobParameters = new JobParametersBuilder()
-                    .addDate(BatchConstants.FROM_DATE, fromDate)
-                    .addDate(BatchConstants.TO_DATE, toDate)
                     .addString(BatchConstants.TRACE_ID, UUID.randomUUID().toString())
                     .toJobParameters();
 

@@ -7,6 +7,7 @@ import com.kit.migrator.datamigrator.enums.SelectionReasonEnum;
 import com.kit.migrator.datamigrator.model.Beneficiary;
 import com.kit.migrator.datamigrator.model.Nominee;
 import java.util.ArrayList;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -35,6 +36,18 @@ public class BeneficiaryProcessor implements ItemProcessor<Beneficiary, Benefici
                 NomineeDto nomineeDto = mapper.map(nominee, NomineeDto.class);
                 beneficiaryDto.getNominees().add(nomineeDto);
             }
+        }
+        
+        if(beneficiary.getBiometric() != null){
+            beneficiaryDto.setPhotoUrl(beneficiary.getBiometric().getPhoto());
+        }
+        
+        if(beneficiary.getAlternatePayee1() != null && beneficiary.getAlternatePayee1().getBiometric() != null){
+            beneficiaryDto.getAlternatePayee1().setPhotoUrl(beneficiary.getAlternatePayee1().getBiometric().getPhoto());
+        }
+        
+        if(beneficiary.getAlternatePayee2() != null && beneficiary.getAlternatePayee2().getBiometric() != null){
+            beneficiaryDto.getAlternatePayee2().setPhotoUrl(beneficiary.getAlternatePayee2().getBiometric().getPhoto());
         }
         
 

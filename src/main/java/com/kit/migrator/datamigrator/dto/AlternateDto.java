@@ -33,6 +33,8 @@ public class AlternateDto implements Serializable{
     private String documentTypeOther;
     private String nationalId;
     private String payeePhoneNo;
+    
+    private String photoUrl;
 
     public AlternateDto() {
     }

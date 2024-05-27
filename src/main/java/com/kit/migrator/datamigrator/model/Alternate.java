@@ -54,4 +54,8 @@ public class Alternate {
 
     @Column(name = "PAYEE_PHONE_NO", length = 10)
     private String payeePhoneNo;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "BIOMETRIC_ID", referencedColumnName = "ID", nullable = false)
+    private Biometric biometric;
 }

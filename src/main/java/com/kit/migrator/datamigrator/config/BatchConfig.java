@@ -49,13 +49,11 @@ public class BatchConfig {
         Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
         Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
         List<Object> parameters = new ArrayList<>();
-        parameters.add(fromDate);
-        parameters.add(toDate);
         parameters.add(0);
         parameters.add(AfisStatusEnum.ENROLLED);
         RepositoryItemReader<Beneficiary> reader = new RepositoryItemReader<>();
         reader.setRepository(beneficiaryRepository);
-        reader.setMethodName("findBeneficiaryByCreatedBetweenAndMisSyncStatusAndAfisStatus");
+        reader.setMethodName("findBeneficiaryByMisSyncStatusAndAfisStatus");
         reader.setArguments(parameters);
         reader.setPageSize(fetchSize);
 

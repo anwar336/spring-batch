@@ -1,6 +1,7 @@
 package com.kit.migrator.datamigrator.gateway.model;
 
 import com.kit.migrator.datamigrator.Utility.Utils;
+import com.kit.migrator.datamigrator.dto.AlternateDto;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 public class MisRequestModel {
+
     private String supervisor_id; //
     private String partner_code; // 
     private String household_number;
@@ -57,85 +59,97 @@ public class MisRequestModel {
     private String rsTemplate;
     private String rtTemplate;
 
+    private String household_photo_url;
+    private String alt1_photo_url;
+    private String alt2_photo_url;
+    private String alt1Name;
+    private String alt1Gender;
+    private String alt1Age;
+    private String alt1Nid;
+    private String alt1Mobile;
+    private String alt2Name;
+    private String alt2Gender;
+    private String alt2Age;
+    private String alt2Nid;
+    private String alt2Mobile;
+
     public MisRequestModel(BeneficiaryDto dto) {
         this.household_number = dto.getApplicationId();
         this.member_number = dto.getHouseholdSize() != null ? dto.getHouseholdSize().toString() : null;
-        this.household_name = dto.getRespondentFirstName() + " " +  dto.getRespondentMiddleName() + " " + dto.getRespondentLastName();
+        this.household_name = dto.getRespondentFirstName() + " " + dto.getRespondentMiddleName() + " " + dto.getRespondentLastName();
         this.age = dto.getRespondentAge() != null ? dto.getRespondentAge().toString() : null;
         this.id_number = dto.getRespondentId();
         this.phone_number = dto.getRespondentPhoneNo();
-        
-        
-        if(dto.getSpouseFirstName() != null && dto.getSpouseFirstName().length() > 0){
+
+        if (dto.getSpouseFirstName() != null && dto.getSpouseFirstName().length() > 0) {
             this.spouse_name = dto.getSpouseFirstName() + " " + dto.getSpouseMiddleName() + " " + dto.getSpouseLastName();
         }
-        if(dto.getRespondentGender() == GenderEnum.MALE){
+        if (dto.getRespondentGender() == GenderEnum.MALE) {
             this.gender = "M";
         }
-        if(dto.getRespondentGender() == GenderEnum.FEMALE){
+        if (dto.getRespondentGender() == GenderEnum.FEMALE) {
             this.gender = "F";
         }
         Integer zeroFive = 0;
         Integer maleTotal = 0;
         Integer femaleTotal = 0;
-        if(dto.getHouseholdMember2() != null) {
+        if (dto.getHouseholdMember2() != null) {
             maleTotal += dto.getHouseholdMember2().getMaleTotal() != null ? dto.getHouseholdMember2().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember2().getFemaleTotal() != null ? dto.getHouseholdMember2().getFemaleTotal() : 0;
             zeroFive = (dto.getHouseholdMember2().getMaleTotal() != null ? dto.getHouseholdMember2().getMaleTotal() : 0)
-                        + (dto.getHouseholdMember2().getFemaleTotal() != null ? dto.getHouseholdMember2().getFemaleTotal() : 0);
-            
+                    + (dto.getHouseholdMember2().getFemaleTotal() != null ? dto.getHouseholdMember2().getFemaleTotal() : 0);
+
         }
-        if(dto.getHouseholdMember5() != null) {
+        if (dto.getHouseholdMember5() != null) {
             maleTotal += dto.getHouseholdMember5().getMaleTotal() != null ? dto.getHouseholdMember5().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember5().getFemaleTotal() != null ? dto.getHouseholdMember5().getFemaleTotal() : 0;
-            
+
             zeroFive += (dto.getHouseholdMember5().getMaleTotal() != null ? dto.getHouseholdMember5().getMaleTotal() : 0)
-                        + (dto.getHouseholdMember5().getFemaleTotal() != null ? dto.getHouseholdMember5().getFemaleTotal() : 0);
-            
-            
+                    + (dto.getHouseholdMember5().getFemaleTotal() != null ? dto.getHouseholdMember5().getFemaleTotal() : 0);
+
         }
         this.zero_five = zeroFive.toString();
 
         Integer sixEighteen = 0;
-        if(dto.getHouseholdMember17() != null) {
+        if (dto.getHouseholdMember17() != null) {
             maleTotal += dto.getHouseholdMember17().getMaleTotal() != null ? dto.getHouseholdMember17().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember17().getFemaleTotal() != null ? dto.getHouseholdMember17().getFemaleTotal() : 0;
-            
+
             sixEighteen = (dto.getHouseholdMember17().getMaleTotal() != null ? dto.getHouseholdMember17().getMaleTotal() : 0)
                     + (dto.getHouseholdMember17().getFemaleTotal() != null ? dto.getHouseholdMember17().getFemaleTotal() : 0);
         }
         this.six_eighteen = sixEighteen.toString();
-        
+
         Integer nineteenFortyFive = 0;
-        if(dto.getHouseholdMember35() != null) {
+        if (dto.getHouseholdMember35() != null) {
             maleTotal += dto.getHouseholdMember35().getMaleTotal() != null ? dto.getHouseholdMember35().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember35().getFemaleTotal() != null ? dto.getHouseholdMember35().getFemaleTotal() : 0;
-            
+
             nineteenFortyFive = (dto.getHouseholdMember35().getMaleTotal() != null ? dto.getHouseholdMember35().getMaleTotal() : 0)
                     + (dto.getHouseholdMember35().getFemaleTotal() != null ? dto.getHouseholdMember35().getFemaleTotal() : 0);
         }
         this.nineteen_forty_five = nineteenFortyFive.toString();
 
         Integer fortySixSixtyFive = 0;
-        if(dto.getHouseholdMember64() != null) {
+        if (dto.getHouseholdMember64() != null) {
             maleTotal += dto.getHouseholdMember64().getMaleTotal() != null ? dto.getHouseholdMember64().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember64().getFemaleTotal() != null ? dto.getHouseholdMember64().getFemaleTotal() : 0;
-            
+
             fortySixSixtyFive = (dto.getHouseholdMember64().getMaleTotal() != null ? dto.getHouseholdMember64().getMaleTotal() : 0)
                     + (dto.getHouseholdMember64().getFemaleTotal() != null ? dto.getHouseholdMember64().getFemaleTotal() : 0);
             this.forty_six_sixty_five = fortySixSixtyFive.toString();
         }
 
         Integer sixtySix = 0;
-        if(dto.getHouseholdMember65() != null) {
+        if (dto.getHouseholdMember65() != null) {
             maleTotal += dto.getHouseholdMember65().getMaleTotal() != null ? dto.getHouseholdMember65().getMaleTotal() : 0;
             femaleTotal += dto.getHouseholdMember65().getFemaleTotal() != null ? dto.getHouseholdMember65().getFemaleTotal() : 0;
-            
+
             sixtySix = (dto.getHouseholdMember65().getMaleTotal() != null ? dto.getHouseholdMember65().getMaleTotal() : 0)
                     + (dto.getHouseholdMember65().getFemaleTotal() != null ? dto.getHouseholdMember65().getFemaleTotal() : 0);
             this.sixty_six = sixtySix.toString();
         }
-        
+
         this.female_dependants = femaleTotal.toString();
         this.male_dependants = maleTotal.toString();
 
@@ -143,40 +157,74 @@ public class MisRequestModel {
         this.average_household = dto.getHouseholdMonthlyAvgIncome() != null ? dto.getHouseholdMonthlyAvgIncome().toString() : null;
         this.household_size = dto.getHouseholdSize() != null ? dto.getHouseholdSize().toString() : null;
 
-        if(dto.getAddress() != null){
+        if (dto.getAddress() != null) {
             this.state = dto.getAddress().getStateId() != null ? dto.getAddress().getStateId().toString() : null;
             this.county = dto.getAddress().getCountyId() != null ? dto.getAddress().getCountyId().toString() : null;
             this.boma = dto.getAddress().getBoma() != null ? dto.getAddress().getBoma().toString() : null;
             this.payam = dto.getAddress().getPayam() != null ? dto.getAddress().getPayam().toString() : null;
         }
 
-        if(dto.getLocation() != null){
+        if (dto.getLocation() != null) {
             this.latitude = dto.getLocation().getLat() != null ? dto.getLocation().getLat().toString() : null;
             this.longitude = dto.getLocation().getLon() != null ? dto.getLocation().getLon().toString() : null;
         }
 
         this.legal_status = dto.getRespondentLegalStatus() != null ? dto.getRespondentLegalStatus().name() : null;
-        this.selection_criteria = dto.getSelectionCriteria() != null ? dto.getSelectionCriteria().getValue(): null;
-        if(dto.getSelectionReason() != null && dto.getSelectionReason().size() > 0){
-            if(dto.getSelectionReason().get(0) != null){
+        this.selection_criteria = dto.getSelectionCriteria() != null ? dto.getSelectionCriteria().getValue() : null;
+        if (dto.getSelectionReason() != null && dto.getSelectionReason().size() > 0) {
+            if (dto.getSelectionReason().get(0) != null) {
                 this.selection_reason = dto.getSelectionReason().get(0).name();
             }
         }
         
+        this.household_photo_url = dto.getPhotoUrl();
+
         Integer alternateNumber = 0;
-        if(dto.getAlternatePayee1() != null){
+        if (dto.getAlternatePayee1() != null) {
             alternateNumber += 1;
+            
+            AlternateDto alt = dto.getAlternatePayee1();
+            
+            this.alt1Name = alt.getPayeeFirstName() + " " + alt.getPayeeMiddleName() + " " + alt.getPayeeLastName();
+            if (alt.getPayeeGender() == GenderEnum.MALE) {
+                this.alt1Gender = "M";
+            }
+            if (alt.getPayeeGender() == GenderEnum.FEMALE) {
+                this.alt1Gender = "F";
+            }
+            if(alt.getPayeeAge() != null){
+                this.alt1Age = alt.getPayeeAge().toString();
+            }
+            this.alt1Mobile = alt.getPayeePhoneNo();
+            this.alt1Nid = alt.getNationalId();
+            this.alt1_photo_url = alt.getPhotoUrl();
         }
-        if(dto.getAlternatePayee2() != null){
+        
+        if (dto.getAlternatePayee2() != null) {
             alternateNumber += 1;
+            
+            AlternateDto alt = dto.getAlternatePayee2();
+            
+            this.alt2Name = alt.getPayeeFirstName() + " " + alt.getPayeeMiddleName() + " " + alt.getPayeeLastName();
+            if (alt.getPayeeGender() == GenderEnum.MALE) {
+                this.alt2Gender = "M";
+            }
+            if (alt.getPayeeGender() == GenderEnum.FEMALE) {
+                this.alt2Gender = "F";
+            }
+            if(alt.getPayeeAge() != null){
+                this.alt2Age = alt.getPayeeAge().toString();
+            }
+            this.alt2Mobile = alt.getPayeePhoneNo();
+            this.alt2Nid = alt.getNationalId();
+            this.alt2_photo_url = alt.getPhotoUrl();
         }
         this.alternate_number = alternateNumber.toString();
-        
+
         this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
         this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
-        
+
         //// static data
-        
         this.partner_code = "1001";
 //        this.boma = "1000";
 //        this.payam = "1010";
