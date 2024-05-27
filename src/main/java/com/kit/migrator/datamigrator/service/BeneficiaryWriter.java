@@ -24,7 +24,7 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
     @Override
     public void write(List<? extends BeneficiaryDto> beneficiaryList) throws Exception {
         beneficiaryList.forEach(b->{
-            log.info(" >>> " + b.getApplicationId());
+            log.info(" >>> " + b.toString());
             
             MisRequestModel requestModel = new MisRequestModel(b);
             MisResponseModel responseModel = null;

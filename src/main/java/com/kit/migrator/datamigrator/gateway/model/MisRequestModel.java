@@ -3,13 +3,16 @@ package com.kit.migrator.datamigrator.gateway.model;
 import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.dto.AlternateDto;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
+import com.kit.migrator.datamigrator.dto.NomineeDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
+import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @NoArgsConstructor
+@ToString
 public class MisRequestModel {
 
     private String supervisor_id; //
@@ -72,6 +75,8 @@ public class MisRequestModel {
     private String alt2Age;
     private String alt2Nid;
     private String alt2Mobile;
+    
+    List<NomineeDto> nomineeList;
 
     public MisRequestModel(BeneficiaryDto dto) {
         this.household_number = dto.getApplicationId();
@@ -220,6 +225,8 @@ public class MisRequestModel {
             this.alt2_photo_url = alt.getPhotoUrl();
         }
         this.alternate_number = alternateNumber.toString();
+        
+        this.nomineeList = dto.getNominees();
 
         this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
         this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
