@@ -24,10 +24,9 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
     @Override
     public void write(List<? extends BeneficiaryDto> beneficiaryList) throws Exception {
         beneficiaryList.forEach(b->{
-            //log.info(" >>> " + b.getApplicationId());
+            log.info(" >>> " + b.getApplicationId());
             
             MisRequestModel requestModel = new MisRequestModel(b);
-            log.info(" >>> " + requestModel.toString());
             MisResponseModel responseModel = null;
             if(requestModel != null){
                 responseModel = gateway.syncData(requestModel);

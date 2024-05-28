@@ -4,17 +4,14 @@ import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.dto.AlternateDto;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.dto.MisNomineeDto;
-import com.kit.migrator.datamigrator.dto.NomineeDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString
 public class MisRequestModel {
 
     private String supervisor_id; //
