@@ -3,9 +3,11 @@ package com.kit.migrator.datamigrator.gateway.model;
 import com.kit.migrator.datamigrator.Utility.Utils;
 import com.kit.migrator.datamigrator.dto.AlternateDto;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
+import com.kit.migrator.datamigrator.dto.MisNomineeDto;
 import com.kit.migrator.datamigrator.dto.NomineeDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
 import java.util.List;
+import java.util.stream.Collectors;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -76,7 +78,7 @@ public class MisRequestModel {
     private String alt2Nid;
     private String alt2Mobile;
     
-    List<NomineeDto> nomineeList;
+    List<MisNomineeDto> nomineeList;
 
     public MisRequestModel(BeneficiaryDto dto) {
         this.household_number = dto.getApplicationId();
@@ -226,7 +228,11 @@ public class MisRequestModel {
         }
         this.alternate_number = alternateNumber.toString();
         
-        this.nomineeList = dto.getNominees();
+        if(dto.getNominees() != null && dto.getNominees().size() > 0){
+            this.nomineeList = dto.getNominees().parallelStream().map(n->{
+                return new MisNomineeDto(n);
+            }).collect(Collectors.toList());
+        }
 
         this.created_at = Utils.dateToString(dto.getCreated(), "yyyy-MM-dd hh:mm:ss");
         this.updated_at = Utils.dateToString(dto.getUpdated(), "yyyy-MM-dd hh:mm:ss");
