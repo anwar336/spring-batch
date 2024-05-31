@@ -244,6 +244,7 @@ public class MisRequestModel {
 
         //// static data
         this.partner_code = "1001";
+        this.beneficiary_type = "1";
 //        this.boma = "1000";
 //        this.payam = "1010";
 //        this.county = "1007";
