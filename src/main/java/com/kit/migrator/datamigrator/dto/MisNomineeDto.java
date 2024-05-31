@@ -7,10 +7,6 @@ package com.kit.migrator.datamigrator.dto;
 
 import java.io.Serializable;
 
-import com.kit.migrator.datamigrator.enums.GenderEnum;
-import com.kit.migrator.datamigrator.enums.OccupationEnum;
-import com.kit.migrator.datamigrator.enums.RelationshipEnum;
-import com.kit.migrator.datamigrator.model.Nominee;
 import lombok.Data;
 import lombok.ToString;
 

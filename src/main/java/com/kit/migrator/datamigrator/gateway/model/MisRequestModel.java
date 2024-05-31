@@ -5,6 +5,7 @@ import com.kit.migrator.datamigrator.dto.AlternateDto;
 import com.kit.migrator.datamigrator.dto.BeneficiaryDto;
 import com.kit.migrator.datamigrator.dto.MisNomineeDto;
 import com.kit.migrator.datamigrator.enums.GenderEnum;
+import com.kit.migrator.datamigrator.enums.SelectionReasonEnum;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
@@ -176,8 +177,15 @@ public class MisRequestModel {
         this.legal_status = dto.getRespondentLegalStatus() != null ? dto.getRespondentLegalStatus().name() : null;
         this.selection_criteria = dto.getSelectionCriteria() != null ? dto.getSelectionCriteria().getValue() : null;
         if (dto.getSelectionReason() != null && dto.getSelectionReason().size() > 0) {
-            if (dto.getSelectionReason().get(0) != null) {
-                this.selection_reason = dto.getSelectionReason().get(0).name();
+            int count = 1;
+            for(SelectionReasonEnum selectionReason : dto.getSelectionReason()){
+                if (selectionReason != null) {
+                    this.selection_reason += selectionReason.getValue();
+                }
+                if(count < dto.getSelectionReason().size()){
+                    this.selection_reason += ", ";
+                    count++;
+                }
             }
         }
         
