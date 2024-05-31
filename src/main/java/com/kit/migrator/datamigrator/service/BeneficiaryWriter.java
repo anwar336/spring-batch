@@ -39,7 +39,7 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
                     }
                     else{
                         log.error("Beneficiary validation error. Reason {} ", responseModel.getReturnId());
-                        if(responseModel.getReturnId() == -1){
+                        if(responseModel.getReturnId().intValue() == -1){
                             dao.updateBeneficiarySyncStatus(b.getApplicationId(), 1);
                         }
                     }
