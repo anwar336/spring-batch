@@ -176,6 +176,7 @@ public class MisRequestModel {
 
         this.legal_status = dto.getRespondentLegalStatus() != null ? dto.getRespondentLegalStatus().name() : null;
         this.selection_criteria = dto.getSelectionCriteria() != null ? dto.getSelectionCriteria().getValue() : null;
+        this.selection_reason = "";
         if (dto.getSelectionReason() != null && dto.getSelectionReason().size() > 0) {
             int count = 1;
             for(SelectionReasonEnum selectionReason : dto.getSelectionReason()){
