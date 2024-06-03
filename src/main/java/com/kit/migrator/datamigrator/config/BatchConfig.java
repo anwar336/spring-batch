@@ -49,8 +49,8 @@ public class BatchConfig {
     @StepScope
     public ItemReader<Beneficiary> beneficiaryReader(@Value("#{jobParameters}") Map<String, Object> jobParameters) throws Exception {
 
-        Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
-        Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
+//        Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
+//        Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
         List<Object> parameters = new ArrayList<>();
         parameters.add(0);
         parameters.add(AfisStatusEnum.ENROLLED);
