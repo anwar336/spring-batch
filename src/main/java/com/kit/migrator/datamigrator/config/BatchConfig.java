@@ -30,8 +30,11 @@ import java.util.*;
 @EnableBatchProcessing
 public class BatchConfig {
     
-    @Value(value = "${batch.migrator.reader.size:20}")
-    private Integer fetchSize;
+    @Value(value = "${batch.migrator.reader.size:200}")
+    private Integer rederSize;
+    
+    @Value(value = "${batch.migrator.chunk.size:200}")
+    private Integer chunkSize;
 
     @Autowired
     BeneficiaryRepository beneficiaryRepository;
@@ -55,7 +58,7 @@ public class BatchConfig {
         reader.setRepository(beneficiaryRepository);
         reader.setMethodName("findBeneficiaryByMisSyncStatusAndAfisStatus");
         reader.setArguments(parameters);
-        reader.setPageSize(fetchSize);
+        reader.setPageSize(rederSize);
 
         HashMap<String, Sort.Direction> sorts = new HashMap<>();
         sorts.put("id", Sort.Direction.ASC);
@@ -80,7 +83,7 @@ public class BatchConfig {
     protected Step migrationStep1(ItemReader<Beneficiary> beneficiaryReader,
                                   ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryProcessor,
                                   ItemWriter<BeneficiaryDto> beneficiaryWriter) {
-        return stepBuilderFactory.get("migrationStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryWriter).build();
+        return stepBuilderFactory.get("migrationStep1").<Beneficiary, BeneficiaryDto> chunk(chunkSize).reader(beneficiaryReader).processor(beneficiaryProcessor).writer(beneficiaryWriter).build();
     }
 
     @Bean(name = "migratorJob")
