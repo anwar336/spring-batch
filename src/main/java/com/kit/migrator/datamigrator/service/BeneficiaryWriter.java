@@ -48,6 +48,9 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
                     log.error("Beneficiary synced error. Reason {} ", responseModel.getErrorMessage());
                 }
             }
+            else{
+                log.error(" !!!!!!  !!!!!! Beneficiary synced error. Response is empty");
+            }
             
         });
 
