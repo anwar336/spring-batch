@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @NoArgsConstructor
-@ToString
 public class MisRequestModel {
 
     private String supervisor_id; //

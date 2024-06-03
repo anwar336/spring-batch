@@ -29,7 +29,6 @@ public class BeneficiaryWriter implements ItemWriter<BeneficiaryDto> {
             MisRequestModel requestModel = new MisRequestModel(b);
             MisResponseModel responseModel = null;
             if(requestModel != null){
-                log.info("[{}]", requestModel.toString());
                 responseModel = gateway.syncData(requestModel);
             }
             if(responseModel != null){
