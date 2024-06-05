@@ -42,16 +42,15 @@ public class BatchConfigES {
     @StepScope
     public ItemReader<Beneficiary> beneficiaryESReader(@Value("#{jobParameters}") Map<String, Object> jobParameters) throws Exception {
 
-        Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
-        Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
-        List<Date> parameters = new ArrayList<>();
-        parameters.add(fromDate);
-        parameters.add(toDate);
+//        Date fromDate = (Date)jobParameters.get(BatchConstants.FROM_DATE);
+//        Date toDate = (Date)jobParameters.get(BatchConstants.TO_DATE);
+        List<Integer> parameters = new ArrayList<>();
+        parameters.add(0);
         RepositoryItemReader<Beneficiary> reader = new RepositoryItemReader<>();
         reader.setRepository(beneficiaryRepository);
-        reader.setMethodName("findBeneficiaryByCreatedBetween");
+        reader.setMethodName("findBeneficiaryByEsSyncStatus");
         reader.setArguments(parameters);
-        reader.setPageSize(20);
+        reader.setPageSize(200);
 
         HashMap<String, Sort.Direction> sorts = new HashMap<>();
         sorts.put("id", Sort.Direction.ASC);
@@ -76,7 +75,7 @@ public class BatchConfigES {
     protected Step esStep1(ItemReader<Beneficiary> beneficiaryESReader,
                                   ItemProcessor<Beneficiary, BeneficiaryDto> beneficiaryESProcessor,
                                   ItemWriter<BeneficiaryDto> beneficiaryESWriter) {
-        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(20).reader(beneficiaryESReader).processor(beneficiaryESProcessor).writer(beneficiaryESWriter).build();
+        return stepBuilderFactory.get("esStep1").<Beneficiary, BeneficiaryDto> chunk(200).reader(beneficiaryESReader).processor(beneficiaryESProcessor).writer(beneficiaryESWriter).build();
     }
 
     @Bean(name = "esJob")

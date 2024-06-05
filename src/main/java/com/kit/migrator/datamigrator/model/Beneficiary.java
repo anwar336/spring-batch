@@ -185,6 +185,9 @@ public class Beneficiary {
     
     @Column(name = "MIS_SYNC_STATUS")
     private Integer misSyncStatus;
+    
+    @Column(name = "ES_SYNC_STATUS")
+    private Integer esSyncStatus;
 
     @Version
     @Column(name = "VERSION", nullable = false)
