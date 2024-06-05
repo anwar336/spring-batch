@@ -47,28 +47,15 @@ public class DataMigratorApplication {
         }
     }
 
-    @Scheduled(fixedDelay = 1000 * 60 * 60 * 24)
+    @Scheduled(fixedDelay = 1000 * 60 * 5)
     public void runJob() {
         launchJob(esJob);
     }
 
     public void launchJob(Job job) {
         try {
-            Date currentDate = new Date();
-            Date fromDate = Utils.addDays(currentDate, -1);
-            Date toDate = Utils.addDays(currentDate, 1);
-            
-            if(!StringUtils.isEmpty(startDateStr)){
-                fromDate = Utils.getDateFromString(startDateStr, "yyyy-MM-dd");
-            }
-            if(!StringUtils.isEmpty(endDateStr)){
-                toDate = Utils.getDateFromString(endDateStr, "yyyy-MM-dd");
-            }
-            
             
             JobParameters jobParameters = new JobParametersBuilder()
-                    .addDate(BatchConstants.FROM_DATE, fromDate)
-                    .addDate(BatchConstants.TO_DATE, toDate)
                     .addString(BatchConstants.TRACE_ID, UUID.randomUUID().toString())
                     .toJobParameters();
 

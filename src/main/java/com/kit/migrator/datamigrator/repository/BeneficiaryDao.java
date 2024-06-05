@@ -29,4 +29,12 @@ public class BeneficiaryDao {
         q.executeUpdate();
     }
     
+    @Transactional
+    public void updateBeneficiaryEsSyncStatus(String applicationId, Integer status){
+        String sql = "update beneficiary set es_sync_status = :status where application_id = :applicationId";
+        Query q = em.createNativeQuery(sql);
+        q.setParameter("status", status).setParameter("applicationId", applicationId);
+        q.executeUpdate();
+    }
+    
 }
