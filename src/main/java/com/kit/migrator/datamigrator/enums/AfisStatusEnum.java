@@ -17,7 +17,8 @@ public enum AfisStatusEnum {
     REJECTED,
     DUPLICATE_ID,
     BAD_OBJECT,
-    ERROR;
+    ERROR,
+    ALTERNATE_PENDING;
 
     public static AfisStatusEnum getAfisStatus(Integer ordinal) {
         if (ordinal == null) {
