@@ -17,7 +17,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class MisNomineeDto implements Serializable {
-    private Integer afisNomineeId;
+    private Long afisNomineeId;
     private String applicationId;
     private String nomineeFirstName;
     private String nomineeMiddleName;
@@ -37,7 +37,7 @@ public class MisNomineeDto implements Serializable {
 
     public MisNomineeDto(NomineeDto nominee) {
         if (nominee != null) {
-            this.afisNomineeId = nominee.getId().intValue();
+            this.afisNomineeId = nominee.getId();
             this.applicationId = nominee.getApplicationId();
             this.nomineeFirstName = nominee.getNomineeFirstName();
             this.nomineeMiddleName = nominee.getNomineeMiddleName();
