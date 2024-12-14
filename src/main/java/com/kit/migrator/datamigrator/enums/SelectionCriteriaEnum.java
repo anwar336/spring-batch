@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public enum SelectionCriteriaEnum {
     LIPW("Component 1 (Public Works)"),
-    DIS("Component 2 (Direct Income Support)");
+    DIS("Component 1 (Direct Income Support)");
     
     String value;
     
