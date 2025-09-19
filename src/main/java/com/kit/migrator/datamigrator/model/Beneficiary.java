@@ -196,5 +196,19 @@ public class Beneficiary {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BIOMETRIC_ID", referencedColumnName = "ID", nullable = false)
     private Biometric biometric;
+    
+    
+    @Column(name = "REGISTRATION_PHASE", length = 10)
+    private String registrationPhase;
+
+    @Column(name = "HAS_MOBILE_WALLET")
+    private Boolean hasMobileWallet;
+
+    @Column(name = "MOBILE_MONEY_PROVIDER")
+    @Enumerated(EnumType.STRING)
+    private MobileMoneyProviderEnum mobileMoneyProvider;
+
+    @Column(name = "MOBILE_WALLET_NUMBER", length = 15)
+    private String mobileWalletNumber;
 
 }

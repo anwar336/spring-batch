@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.kit.migrator.datamigrator.enums.*;
 import com.kit.migrator.datamigrator.model.Beneficiary;
+import io.micrometer.core.instrument.util.StringUtils;
 import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -74,6 +75,12 @@ public class BeneficiaryDto implements Serializable {
     private AlternateDto alternatePayee2;
     private List<BiometricDto> biometrics;
 
+    private RegistrationPhaseEnum registrationPhase;
+
+    private Boolean hasMobileWallet;
+    private MobileMoneyProviderEnum mobileMoneyProvider;
+    private String mobileWalletNumber;
+    
     private Long createdBy;
     private Long updatedBy;
 
@@ -172,6 +179,13 @@ public class BeneficiaryDto implements Serializable {
 
             this.created = beneficiary.getCreated();
             this.updated = beneficiary.getUpdated();
+            
+            if(StringUtils.isEmpty(beneficiary.getRegistrationPhase())){
+                this.registrationPhase = RegistrationPhaseEnum.valueOf(beneficiary.getRegistrationPhase());
+            }
+            this.hasMobileWallet = beneficiary.getHasMobileWallet();
+            this.mobileMoneyProvider = beneficiary.getMobileMoneyProvider();
+            this.mobileWalletNumber = beneficiary.getMobileWalletNumber();
         }
     }
 }
