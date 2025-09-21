@@ -180,7 +180,7 @@ public class BeneficiaryDto implements Serializable {
             this.created = beneficiary.getCreated();
             this.updated = beneficiary.getUpdated();
             
-            if(StringUtils.isEmpty(beneficiary.getRegistrationPhase())){
+            if(!StringUtils.isEmpty(beneficiary.getRegistrationPhase())){
                 this.registrationPhase = RegistrationPhaseEnum.valueOf(beneficiary.getRegistrationPhase());
             }
             this.hasMobileWallet = beneficiary.getHasMobileWallet();
