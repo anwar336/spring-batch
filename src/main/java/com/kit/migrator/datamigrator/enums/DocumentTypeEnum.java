@@ -13,7 +13,10 @@ public enum DocumentTypeEnum {
     PASSPORT("Passport"),
     NATIONAL_ID("National Id"),
     OTHER("Other"),
-    NONE("None");
+    NONE("None"),
+    REFUGEE_RATION_CARD("Refugee Ration Card"),
+    REFUGEE_ID_CARD("Refugee ID Card"),
+    REFUGEE_PROOF_OF_REGISTRATION("Refugee Proof of Registration");
     
     String value;
 
