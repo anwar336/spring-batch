@@ -22,16 +22,8 @@ public class BeneficiaryDao {
     EntityManager em;
     
     @Transactional
-    public void updateBeneficiarySyncStatus(String applicationId, Integer status){
-        String sql = "update beneficiary set mis_sync_status = :status where application_id = :applicationId";
-        Query q = em.createNativeQuery(sql);
-        q.setParameter("status", status).setParameter("applicationId", applicationId);
-        q.executeUpdate();
-    }
-    
-    @Transactional
     public void updateBeneficiaryEsSyncStatus(String applicationId, Integer status){
-        String sql = "update beneficiary set es_sync_status = :status where application_id = :applicationId";
+        String sql = "update p_beneficiary set es_sync_status = :status where household_number = :applicationId";
         Query q = em.createNativeQuery(sql);
         q.setParameter("status", status).setParameter("applicationId", applicationId);
         q.executeUpdate();
