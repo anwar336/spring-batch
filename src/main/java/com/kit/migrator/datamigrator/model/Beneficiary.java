@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import com.kit.migrator.datamigrator.enums.*;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -88,17 +88,17 @@ public class Beneficiary {
     private RegistrationPhaseEnum registrationPhase;
 
     @OneToMany(mappedBy = "beneficiary", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<HouseholdInfo> householdInfos;
+    private Set<HouseholdInfo> householdInfos;
 
     @OneToMany(mappedBy = "beneficiary", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<HouseholdInfoLP> householdInfosLP;
+    private Set<HouseholdInfoLP> householdInfosLP;
 
 
     @OneToMany(mappedBy = "beneficiary", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<Alternate> alternates;
+    private Set<Alternate> alternates;
 
     @OneToMany(mappedBy = "beneficiary", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<Nominee> nominees;
+    private Set<Nominee> nominees;
 
     @OneToOne(mappedBy = "beneficiary", cascade = CascadeType.ALL)
     private Biometric biometrics;
