@@ -1,12 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.kit.migrator.datamigrator.model;
+
 import javax.persistence.*;
 import lombok.Data;
 
+/**
+ *
+ * @author anwar
+ */
 @Entity
-@Table(name = "P2_BENEFICIARY_HOUSEHOLD")
+@Table(name = "P2_BENEFICIARY_HOUSEHOLD_LP")
 @Data
-public class HouseholdInfo {
-
+public class HouseholdInfoLP {
     @Id
     @Column(name = "ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,17 +24,6 @@ public class HouseholdInfo {
     @Column(name = "AGE_RANGE", nullable = false)
     private Integer ageRange;
 
-    @Column(name = "MALE_NORMAL")
-    private Integer maleTotal;
-
-    @Column(name = "MALE_BOTH")
-    private Integer maleBoth;
-
-    @Column(name = "MALE_DISABLED")
-    private Integer maleDisable;
-
-    @Column(name = "MALE_CHRONICALLY_ILL")
-    private Integer maleChronicalIll;
 
     @Column(name = "FEMALE_NORMAL")
     private Integer femaleTotal;

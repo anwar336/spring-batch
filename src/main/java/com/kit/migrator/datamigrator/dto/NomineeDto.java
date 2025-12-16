@@ -38,9 +38,9 @@ public class NomineeDto implements Serializable {
     public NomineeDto() {
     }
 
-    public NomineeDto(Nominee nominee) {
+    public NomineeDto(Nominee nominee, String applicationId) {
         if (nominee != null) {
-            this.applicationId = nominee.getApplicationId();
+            this.applicationId = applicationId;
             this.nomineeFirstName = nominee.getNomineeFirstName();
             this.nomineeMiddleName = nominee.getNomineeMiddleName();
             this.nomineeLastName = nominee.getNomineeLastName();

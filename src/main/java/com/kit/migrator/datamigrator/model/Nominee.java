@@ -2,6 +2,7 @@ package com.kit.migrator.datamigrator.model;
 import javax.persistence.*;
 
 import com.kit.migrator.datamigrator.enums.GenderEnum;
+import com.kit.migrator.datamigrator.enums.NomineePopupResponse;
 import com.kit.migrator.datamigrator.enums.OccupationEnum;
 import com.kit.migrator.datamigrator.enums.RelationshipEnum;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "NOMINEE")
+@Table(name = "P2_BENEFICIARY_NOMINEE")
 @Data
 public class Nominee implements Serializable {
 
@@ -18,19 +19,19 @@ public class Nominee implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "applicationId", nullable = false, length = 100)
-    private String applicationId;
+    @Column(name = "nominee_index")
+    private Integer nomineeIndex;
 
-    @Column(name = "NOMINEE_FIRST_NAME", nullable = false, length = 100)
+    @Column(name = "FIRST_NAME", nullable = false, length = 32)
     private String nomineeFirstName;
 
-    @Column(name = "NOMINEE_MIDDLE_NAME", nullable = false, length = 100)
+    @Column(name = "MIDDLE_NAME", nullable = false, length = 32)
     private String nomineeMiddleName;
 
-    @Column(name = "NOMINEE_LAST_NAME", nullable = false, length = 100)
+    @Column(name = "LAST_NAME", nullable = false, length = 32)
     private String nomineeLastName;
 
-    @Column(name = "NOMINEE_NICK_NAME")
+    @Column(name = "NICK_NAME")
     private String nomineeNickName;
 
     @Column(name = "RELATIONSHIP_WITH_HOUSEHOLD", nullable = false)
@@ -40,24 +41,28 @@ public class Nominee implements Serializable {
     @Column(name = "RELATIONSHIP_OTHER", length = 100)
     private String relationshipOther;
 
-    @Column(name = "NOMINEE_AGE", nullable = false)
+    @Column(name = "AGE", nullable = false)
     private Integer nomineeAge;
 
-    @Column(name = "NOMINEE_GENDER", nullable = false)
+    @Column(name = "POPUP_RESPONSE", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private NomineePopupResponse nomineePopupResponse;
+
+    @Column(name = "GENDER", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private GenderEnum nomineeGender;
 
-    @Column(name = "IS_READ_WRITE", nullable = false)
+    @Column(name = "CAN_READ_WRITE", nullable = false)
     private Boolean isReadWrite;
 
-    @Column(name = "NOMINEE_OCCUPATION", nullable = false)
+    @Column(name = "OCCUPATION", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private OccupationEnum nomineeOccupation;
 
     @Column(name = "OTHER_OCCUPATION")
     private String otherOccupation;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "BENEFICIARY_ID")
     private Beneficiary beneficiary;
 }

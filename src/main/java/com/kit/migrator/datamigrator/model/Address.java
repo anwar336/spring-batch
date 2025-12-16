@@ -1,10 +1,11 @@
 package com.kit.migrator.datamigrator.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "ADDRESS")
+@Table(name = "P2_BENEFICIARY_ADDRESS")
 @Data
 public class Address {
 
@@ -24,5 +25,16 @@ public class Address {
 
     @Column(name = "BOMA_ID", nullable = false)
     private Long boma;
+
+    @Column(name = "LATITUDE")
+    private Double lat;
+
+    @Column(name = "LONGITUDE")
+    private Double lon;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "BENEFICIARY_ID")
+    @JsonIgnore
+    private Beneficiary beneficiary;
 
 }

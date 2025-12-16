@@ -15,7 +15,7 @@ import lombok.Data;
  * @author anwar
  */
 @Data
-public class HouseholdInfo implements Serializable{
+public class HouseholdInfoDto implements Serializable{
     private String applicationId;
     private Integer maleTotal;
     private Integer maleBoth;
@@ -26,12 +26,12 @@ public class HouseholdInfo implements Serializable{
     private Integer femaleDisable;
     private Integer femaleChronicalIll;
 
-    public HouseholdInfo() {
+    public HouseholdInfoDto() {
     }
 
-    public HouseholdInfo(com.kit.migrator.datamigrator.model.HouseholdInfo householdInfo) {
+    public HouseholdInfoDto(com.kit.migrator.datamigrator.model.HouseholdInfo householdInfo, String applicationId) {
         if (householdInfo != null) {
-            this.applicationId = householdInfo.getApplicationId();
+            this.applicationId = applicationId;
             this.maleTotal = householdInfo.getMaleTotal();
             this.maleBoth = householdInfo.getMaleBoth();
             this.maleDisable = householdInfo.getMaleDisable();
@@ -43,7 +43,7 @@ public class HouseholdInfo implements Serializable{
         }
     }
 
-    public HouseholdInfo(Object[] esObject, int start) {
+    public HouseholdInfoDto(Object[] esObject, int start) {
         if (esObject != null) {
             if (Utils.indexValueExists(esObject, start)) {
                 this.femaleChronicalIll = Utils.getIntegerFromObject(esObject[start]);

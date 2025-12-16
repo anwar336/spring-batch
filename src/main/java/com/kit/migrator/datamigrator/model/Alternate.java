@@ -7,7 +7,7 @@ import com.kit.migrator.datamigrator.enums.RelationshipEnum;
 import lombok.Data;
 
 @Entity
-@Table(name = "ALTERNATE")
+@Table(name = "P2_BENEFICIARY_ALTERNATE")
 @Data
 public class Alternate {
 
@@ -16,23 +16,29 @@ public class Alternate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "PAYEE_FIRST_NAME", length = 100, nullable = false)
+    @Column(name = "alt_index")
+    private Integer altIndex;
+
+    @Column(name = "FIRST_NAME", length = 32, nullable = false)
     private String payeeFirstName;
 
-    @Column(name = "PAYEE_MIDDLE_NAME", nullable = false, length = 100)
+    @Column(name = "MIDDLE_NAME", nullable = false, length = 32)
     private String payeeMiddleName;
 
-    @Column(name = "PAYEE_LAST_NAME", length = 100, nullable = false)
+    @Column(name = "LAST_NAME", length = 32, nullable = false)
     private String payeeLastName;
 
-    @Column(name = "PAYEE_NICK_NAME", length = 100)
+    @Column(name = "NICK_NAME", length = 32)
     private String payeeNickName;
 
-    @Column(name = "PAYEE_GENDER", nullable = false)
+    @Column(name = "FULL_NAME", length = 98, insertable = false, updatable = false)
+    private String payeeFullName;
+
+    @Column(name = "GENDER", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private GenderEnum payeeGender;
 
-    @Column(name = "PAYEE_AGE", nullable = false)
+    @Column(name = "AGE", nullable = false)
     private Integer payeeAge;
 
     @Column(name = "DOCUMENT_TYPE", nullable = false)
@@ -52,6 +58,13 @@ public class Alternate {
     @Column(name = "NATIONAL_ID", length = 50)
     private String nationalId;
 
-    @Column(name = "PAYEE_PHONE_NO", length = 10)
+    @Column(name = "PHONE_NO", length = 14)
     private String payeePhoneNo;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "BENEFICIARY_ID")
+    private Beneficiary beneficiary;
+
+    @OneToOne(mappedBy = "alternate", cascade = CascadeType.ALL)
+    private Biometric biometrics;
 }
