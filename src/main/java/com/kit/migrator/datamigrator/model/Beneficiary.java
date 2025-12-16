@@ -134,5 +134,8 @@ public class Beneficiary {
 
     @Column(name = "id_card_generated_at")
     private Date idCardGeneratedAt;
+    
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
+    private Date created;
 
 }
