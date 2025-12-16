@@ -64,7 +64,4 @@ public class Alternate {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "BENEFICIARY_ID")
     private Beneficiary beneficiary;
-
-    @OneToOne(mappedBy = "alternate", cascade = CascadeType.ALL)
-    private Biometric biometrics;
 }

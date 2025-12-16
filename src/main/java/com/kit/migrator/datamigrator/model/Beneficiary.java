@@ -101,9 +101,6 @@ public class Beneficiary {
     private Set<Nominee> nominees;
 
     @OneToOne(mappedBy = "beneficiary", cascade = CascadeType.ALL)
-    private Biometric biometrics;
-
-    @OneToOne(mappedBy = "beneficiary", cascade = CascadeType.ALL)
     private Address address;
 
     @OneToOne(mappedBy = "beneficiary", cascade = CascadeType.ALL)
