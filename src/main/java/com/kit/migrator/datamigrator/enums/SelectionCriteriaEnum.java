@@ -13,7 +13,8 @@ import java.util.Arrays;
  */
 public enum SelectionCriteriaEnum {
     LIPW,
-    DIS;
+    DIS,
+    ALL;
 
     public static SelectionCriteriaEnum getSelectionCriteria(Integer ordinal) {
         if (ordinal == null) {

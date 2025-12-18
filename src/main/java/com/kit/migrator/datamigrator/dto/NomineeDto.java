@@ -8,6 +8,7 @@ package com.kit.migrator.datamigrator.dto;
 import java.io.Serializable;
 
 import com.kit.migrator.datamigrator.enums.GenderEnum;
+import com.kit.migrator.datamigrator.enums.NomineePopupResponse;
 import com.kit.migrator.datamigrator.enums.OccupationEnum;
 import com.kit.migrator.datamigrator.enums.RelationshipEnum;
 import com.kit.migrator.datamigrator.model.Nominee;
@@ -21,15 +22,17 @@ import lombok.ToString;
 @Data
 @ToString
 public class NomineeDto implements Serializable {
+    private Long id;
     private String applicationId;
+    private Integer nomineeIndex;
     private String nomineeFirstName;
     private String nomineeMiddleName;
     private String nomineeLastName;
     private String nomineeNickName;
     private RelationshipEnum relationshipWithHouseholdHead;
-    
     private String relationshipOther;
     private Integer nomineeAge;
+    private NomineePopupResponse nomineePopupResponse;
     private GenderEnum nomineeGender;
     private Boolean isReadWrite;
     private OccupationEnum nomineeOccupation;
@@ -40,12 +43,15 @@ public class NomineeDto implements Serializable {
 
     public NomineeDto(Nominee nominee, String applicationId) {
         if (nominee != null) {
+            this.id = nominee.getId();
             this.applicationId = applicationId;
+            this.nomineeIndex = nominee.getNomineeIndex();
             this.nomineeFirstName = nominee.getNomineeFirstName();
             this.nomineeMiddleName = nominee.getNomineeMiddleName();
             this.nomineeLastName = nominee.getNomineeLastName();
             this.nomineeNickName = nominee.getNomineeNickName();
             this.relationshipWithHouseholdHead = nominee.getRelationshipWithHouseholdHead();
+            this.nomineePopupResponse = nominee.getNomineePopupResponse();
             this.relationshipOther = nominee.getRelationshipOther();
             this.nomineeAge = nominee.getNomineeAge();
             this.nomineeGender = nominee.getNomineeGender();
