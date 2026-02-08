@@ -119,6 +119,10 @@ public class Beneficiary {
 
     @Column(name = "REMARK")
     private String remark;
+    
+    @Column(name = "PAYMENT_METHOD", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private PaymentMethodEnum paymentMethod;
 
     @Column(name = "current_subproject_id")
     private Integer currentSubprojectId;

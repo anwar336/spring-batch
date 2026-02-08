@@ -89,6 +89,13 @@ public class BeneficiaryDto implements Serializable {
     private MobileMoneyProviderEnum mobileMoneyProvider;
     private String mobileWalletNumber;
     
+    private PaymentMethodEnum paymentMethod;
+    private StatusEnum status;
+    private Integer currentSubprojectId;
+    private Boolean idCardGenerationStatus;
+    private String idCardPath;
+    private Date idCardGeneratedAt;
+    
     private Long createdBy;
     private Long updatedBy;
 
